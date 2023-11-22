@@ -45,6 +45,7 @@ body {
 
 .input-container {
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 5px;
 }
@@ -57,7 +58,7 @@ label {
 
 input {
   display: inline;
-  width: 150px;
+  width: 160px;
   font-weight: bold;
   font-size: 32px;
   padding: 10px 20px;
@@ -71,8 +72,25 @@ input:focus {
   border: 1px solid var(--primary-purple);
 }
 
+.error input {
+  border-color: var(--primary-red);
+}
+
+.error label {
+  color: var(--primary-red);
+}
+
 #year-input-container {
   margin-right: 150px;
+}
+
+.error-message {
+  position: absolute;
+  bottom: -25px;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--primary-red);
 }
 
 /* Mid section */
@@ -115,4 +133,16 @@ ul {
 
 #calculated-age span {
   color: var(--primary-purple);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
