@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/time.svg" />
+    <link rel="stylesheet" href="./src/styles/reset.css" />
+    <link rel="stylesheet" href="./src/styles/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Age Calculator</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Input fields -->
+      <form id="birth-date-form" action="">
+        <div id="day-input-container" class="input-container">
+          <label for="day-input">DAY</label>
+          <input id="day-input" type="number" name="day" placeholder="DD" />
+          <p class="error-message"></p>
+        </div>
+        <div id="month-input-container" class="input-container">
+          <label for="month-input">MONTH</label>
+          <input id="month-input" type="number" name="month" placeholder="MM" />
+          <p class="error-message"></p>
+        </div>
+        <div id="year-input-container" class="input-container">
+          <label for="year-input">YEAR</label>
+          <input id="year-input" type="number" name="year" placeholder="YYYY" />
+          <p class="error-message"></p>
+        </div>
+      </form>
+
+      <!-- Calculate Button -->
+      <div id="button-container">
+        <div class="hr"></div>
+        <button id="calculate-button" type="button">
+          <img src="./src/images/icon-arrow.svg" alt="=" />
+        </button>
+        <div class="hr hr-2"></div>
+      </div>
+
+      <!-- Calculated age -->
+      <ul id="calculated-age">
+        <li id="calculated-years"><span id="age-years">--</span> years</li>
+        <li id="calculated-months"><span id="age-months">--</span> months</li>
+        <li id="calculated-days"><span id="age-days">--</span> days</li>
+      </ul>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
