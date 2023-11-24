@@ -80,3 +80,18 @@ button:hover {
   background-color: gainsboro;
   scale: 105%;
 }
+
+@media (max-width: 480px) {
+  .color-wrapper {
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+    flex-wrap: wrap;
+    font-size: 24px;
+    gap: 10px;
+  }
+
+  nav > p {
+    font-size: medium;
+  }
+}
