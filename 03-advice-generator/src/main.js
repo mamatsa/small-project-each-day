@@ -5,7 +5,7 @@ const numerationEl = document.getElementById("numeration");
 const fetchAdvice = async function () {
   const response = await fetch("https://api.adviceslip.com/advice");
   const data = await response.json();
-  quoteEl.innerText = data.slip.advice;
+  quoteEl.innerText = `"${data.slip.advice}"`;
   numerationEl.innerText = data.slip.id;
 };
 
