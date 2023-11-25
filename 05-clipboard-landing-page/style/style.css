@@ -1,0 +1,71 @@
+:root {
+  --strong-cyan: hsl(171, 66%, 44%);
+  --light-blue: hsl(233, 100%, 69%);
+  --grayish-blue: hsl(201, 11%, 66%);
+  --dark-grayish-blue: hsl(210, 10%, 33%);
+}
+
+p {
+  font-size: 18px;
+  color: var(--grayish-blue);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--dark-grayish-blue);
+}
+
+/* Inotroduction Section */
+.intro {
+  width: 100%;
+  padding: 150px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("/images/bg-header-desktop.png") no-repeat;
+  gap: 50px;
+}
+
+.intro-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 60ch;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  padding: 10px 25px;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.button-ios {
+  background-color: var(--strong-cyan);
+  box-shadow: 0px 8px 30px -5px var(--strong-cyan);
+}
+
+.button-ios:hover {
+  background-color: hsla(171, 66%, 44%, 0.8);
+}
+
+.button-mac {
+  background-color: var(--light-blue);
+  box-shadow: 0px 8px 30px -5px var(--light-blue);
+}
+
+.button-mac:hover {
+  background-color: hsla(233, 100%, 69%, 0.8);
+}
