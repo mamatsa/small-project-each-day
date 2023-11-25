@@ -102,3 +102,10 @@ img {
   align-items: center;
   gap: 15px;
 }
+
+@media (max-width: 768px) {
+  #app {
+    display: flex;
+    flex-direction: column;
+  }
+}
