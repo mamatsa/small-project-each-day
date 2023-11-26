@@ -30,3 +30,4 @@ Users should be able to:
 ## Links
 
 - [Challange URL](https://www.frontendmentor.io/challenges/clipboard-landing-page-5cc9bccd6c4c91111378ecb9)
+- [Live Site URL](https://small-projects-beta.vercel.app/)
