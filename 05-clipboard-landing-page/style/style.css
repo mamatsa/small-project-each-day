@@ -140,3 +140,53 @@ button {
   padding-top: 0px;
   gap: 30px;
 }
+
+/* Footer */
+footer {
+  margin-top: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: hsla(202, 11%, 66%, 0.15);
+  color: var(--grayish-blue);
+  padding: 30px 150px;
+}
+
+footer .nav {
+  display: flex;
+  align-items: start;
+  gap: 80px;
+}
+
+footer .links {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 15px;
+  list-style: none;
+}
+
+footer .links li:hover {
+  color: var(--strong-cyan);
+  cursor: pointer;
+}
+
+.footer-logo {
+  width: 48px;
+}
+
+footer .media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer svg {
+  fill: #4c545c;
+}
+
+footer svg:hover {
+  cursor: pointer;
+  fill: var(--strong-cyan);
+}
