@@ -1,0 +1,58 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 120px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.navHead {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.navItems {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  color: hsl(257, 7%, 63%);
+}
+
+.navItems li {
+  cursor: pointer;
+}
+
+.navItems li:hover {
+  color: hsl(260, 8%, 14%);
+}
+
+.navTail {
+  display: flex;
+  gap: 25px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.buttonLogIn {
+  background-color: white;
+  color: hsl(257, 7%, 63%);
+}
+
+.buttonSignUp {
+  background-color: hsl(180, 66%, 49%);
+  color: white;
+  border-radius: 20px;
+  padding: 5px 20px;
+}
+
+.buttonLogIn:hover {
+  color: hsl(260, 8%, 14%);
+}
+
+.buttonSignUp:hover {
+  background-color: hsla(180, 66%, 49%, 0.45);
+}
