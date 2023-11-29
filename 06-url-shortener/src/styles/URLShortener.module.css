@@ -2,7 +2,6 @@
   padding: 0 120px;
   background-color: hsl(225, 33%, 95%);
   position: relative;
-  min-height: 100px;
 }
 
 .form {
@@ -14,9 +13,7 @@
   display: flex;
   align-items: stretch;
   gap: 20px;
-  width: calc(100% - 240px);
-  position: absolute;
-  top: -60px;
+  transform: translateY(-50%);
 }
 
 .form input {

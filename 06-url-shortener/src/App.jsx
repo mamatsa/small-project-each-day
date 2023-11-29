@@ -1,4 +1,11 @@
-import { Navbar, Banner, URLShortener, Statistics } from "components";
+import {
+  Navbar,
+  Banner,
+  URLShortener,
+  Statistics,
+  GetStarted,
+  Footer,
+} from "components";
 
 const App = () => {
   return (
@@ -7,6 +14,8 @@ const App = () => {
       <Banner />
       <URLShortener />
       <Statistics />
+      <GetStarted />
+      <Footer />
     </>
   );
 };
