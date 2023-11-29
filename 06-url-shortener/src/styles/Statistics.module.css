@@ -1,0 +1,58 @@
+.section {
+  padding: 60px 120px;
+  background-color: hsl(225, 33%, 95%);
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  width: 45ch;
+}
+
+.title h2 {
+  font-size: 36px;
+}
+
+.statistics {
+  display: flex;
+  align-items: center;
+}
+
+.connectingLine {
+  width: 120px;
+  height: 10px;
+  background-color: hsl(180, 66%, 49%);
+}
+
+.statistic {
+  background-color: white;
+  padding: 0 20px 40px 20px;
+  border-radius: 5px;
+}
+
+.statistic h3 {
+  margin-bottom: 10px;
+}
+
+.statistic:nth-child(1) {
+  position: relative;
+  bottom: 35px;
+}
+
+.statistic:nth-child(5) {
+  position: relative;
+  top: 35px;
+}
+
+.svgWrapper {
+  width: fit-content;
+  padding: 20px;
+  border-radius: 50%;
+  background-color: hsl(257, 27%, 26%);
+  transform: translateY(-50%);
+  margin-bottom: -15px;
+}
