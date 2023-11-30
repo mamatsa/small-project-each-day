@@ -17,12 +17,35 @@
   margin-bottom: -60px;
 }
 
+.inputContainer {
+  width: 100%;
+}
+
+.errorText {
+  position: absolute;
+  font-size: 14px;
+  color: hsl(0, 87%, 67%);
+  font-weight: 500;
+  font-style: italic;
+  margin-top: 5px;
+}
+
 .form input {
   width: 100%;
   border: none;
   outline: none;
   padding: 15px 30px;
-  border-radius: 10px;
+  border-radius: 5px;
+}
+
+.form input.error {
+  color: hsl(0, 87%, 67%);
+  outline: 2px solid hsl(0, 87%, 67%);
+}
+
+form input.error::placeholder {
+  color: red;
+  opacity: 0.5;
 }
 
 .form button {
@@ -32,7 +55,7 @@
   cursor: pointer;
   background-color: hsl(180, 66%, 49%);
   color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px 0;
 }
 
