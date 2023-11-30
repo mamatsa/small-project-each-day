@@ -36,10 +36,10 @@ function useShortURL() {
     try {
       const response = await axios.request(options);
       setShortenedURLs({
-        ...shortenedURLs,
         [inputUrl]: response.data.short_url,
+        ...shortenedURLs,
       });
-      console.log(response.data);
+      return response;
     } catch (error) {
       console.error(error);
     }
