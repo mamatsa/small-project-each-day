@@ -79,3 +79,20 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 480px) {
+  .links {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+    margin: 15px 0px;
+  }
+
+  .links li:hover {
+    color: hsl(0, 0%, 75%);
+  }
+
+  .media svg:hover {
+    fill: white;
+  }
+}

@@ -1,6 +1,5 @@
 export { default as Logo } from "./Logo";
 export { default as LogoWhite } from "./LogoWhite";
-export { default as IlustrationWorking } from "./IlustrationWorking";
 export { default as IconBrandRecognition } from "./IconBrandRecognition";
 export { default as IconDetailedRecords } from "./IconDetailedRecords";
 export { default as IconFullyCustomizable } from "./IconFullyCustomizable";

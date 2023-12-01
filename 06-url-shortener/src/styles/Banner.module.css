@@ -2,6 +2,7 @@
   padding: 30px 0px 120px 120px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .bannerInfo {
@@ -19,7 +20,7 @@
 .bannerInfo p {
   font-size: 18px;
   color: hsl(0, 0%, 75%);
-  width: 40ch;
+  max-width: 40ch;
 }
 
 .bannerInfo button {
@@ -34,4 +35,48 @@
 
 .bannerInfo button:hover {
   background-color: hsla(180, 66%, 49%, 0.45);
+}
+
+.banner img {
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .banner {
+    padding: 30px 0px 120px 60px;
+  }
+
+  .bannerInfo h1 {
+    font-size: 48px;
+  }
+
+  .bannerInfo p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    padding: 30px 0 120px 20px;
+    flex-direction: column-reverse;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .bannerInfo {
+    align-items: center;
+  }
+
+  .banner h1 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 480px) {
+  .bannerInfo button:hover {
+    background-color: hsla(180, 66%, 49%);
+  }
 }

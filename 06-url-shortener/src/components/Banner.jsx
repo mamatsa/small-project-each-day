@@ -1,4 +1,4 @@
-import { IlustrationWorking } from "components/svg";
+import IlustrationWorking from "src/assets/images/IllustrationWorking.svg";
 import styles from "styles/Banner.module.css";
 
 const Banner = () => {
@@ -12,7 +12,7 @@ const Banner = () => {
         </p>
         <button>Get Started</button>
       </div>
-      <IlustrationWorking />
+      <img src={IlustrationWorking} alt="Ilustration Working" />
     </div>
   );
 };

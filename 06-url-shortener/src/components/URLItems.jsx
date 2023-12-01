@@ -14,6 +14,7 @@ const URLItems = ({ shortenedURLs }) => {
         return (
           <div key={item[0]} className={styles.urlItem}>
             <h3>{item[0]}</h3>
+            <div className={styles.separator}></div>
             <div className={styles.shortened}>
               <p>{item[1]}</p>
               <button

@@ -47,3 +47,9 @@
     font-size: 24px;
   }
 }
+
+@media (max-width: 480px) {
+  .section button:hover {
+    background-color: hsl(180, 66%, 49%);
+  }
+}
