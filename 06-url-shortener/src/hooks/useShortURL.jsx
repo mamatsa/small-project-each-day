@@ -24,7 +24,7 @@ function useShortURL() {
       url: "https://url-shortener23.p.rapidapi.com/shorten",
       headers: {
         "content-type": "application/json",
-        "X-RapidAPI-Key": "9d67a4daa0mshd63ae851c2bf538p1a1ae2jsnf6390d4d46b2",
+        "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
         "X-RapidAPI-Host": "url-shortener23.p.rapidapi.com",
       },
       data: {
