@@ -1,0 +1,217 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 120px;
+  font-size: 14px;
+  font-weight: 700;
+  position: relative;
+}
+
+.navHead {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.navItems {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  color: hsl(257, 7%, 63%);
+}
+
+.navItems li {
+  cursor: pointer;
+}
+
+.navItems li:hover {
+  color: hsl(260, 8%, 14%);
+}
+
+.navTail {
+  display: flex;
+  gap: 25px;
+}
+
+/* Buttons */
+button {
+  border: none;
+  cursor: pointer;
+}
+
+.buttonLogIn {
+  background-color: white;
+  color: hsl(257, 7%, 63%);
+}
+
+.buttonSignUp {
+  background-color: hsl(180, 66%, 49%);
+  color: white;
+  border-radius: 20px;
+  padding: 5px 20px;
+}
+
+.buttonLogIn:hover {
+  color: hsl(260, 8%, 14%);
+}
+
+.buttonSignUp:hover {
+  background-color: hsla(180, 66%, 49%, 0.45);
+}
+
+/* Burger menu icon */
+.burger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.burger * {
+  height: 3px;
+  width: 35px;
+  background-color: hsl(258, 8%, 25%);
+}
+
+/* Mobile navbar */
+.mobileNavbar {
+  position: absolute;
+  bottom: -320px;
+  background-color: hsl(257, 27%, 26%);
+  width: calc(100% - 40px);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 30px 0;
+  border-radius: 10px;
+  z-index: 20;
+}
+
+.mobileNavSeparator {
+  width: 90%;
+  height: 1px;
+  background-color: hsl(0, 5%, 56%);
+}
+
+.mobileNavItems {
+  color: white;
+  list-style: none;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.mobileNavItems li:hover {
+  color: hsl(180, 66%, 49%);
+  cursor: pointer;
+}
+
+.mobileNavButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 18px;
+  width: 100%;
+}
+
+.mobileNavButtons .buttonLogIn {
+  background-color: transparent;
+  color: white;
+}
+
+.mobileNavButtons .buttonSignUp {
+  width: 90%;
+  padding: 10px;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(3px);
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 20px 60px;
+  }
+
+  .navHead {
+    gap: 10px;
+  }
+
+  .navItems {
+    gap: 20px;
+  }
+
+  .navTail {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px 20px;
+  }
+
+  .navHead {
+    gap: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 20px 20px;
+  }
+
+  .navHead {
+    gap: 0;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .navItems {
+    display: none;
+  }
+
+  .navTail {
+    display: none;
+  }
+
+  .mobileNavbar {
+    display: flex;
+  }
+
+  .overlay {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileNavItems li:hover {
+    color: white;
+  }
+
+  .buttonSignUp:hover {
+    background-color: hsla(180, 66%, 49%);
+  }
+}
