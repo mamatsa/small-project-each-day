@@ -15,5 +15,12 @@
 
 h1 {
   color: white;
-  margin: 20px 0;
+  margin: 20px 10px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20gipx;
+  }
 }

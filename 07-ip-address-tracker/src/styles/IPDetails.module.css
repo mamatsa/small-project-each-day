@@ -31,3 +31,30 @@
   width: 1px;
   background-color: rgb(190, 190, 190);
 }
+
+@media (max-width: 1024px) {
+  .infoContainer {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .infoContainer {
+    grid-template-columns: 1fr;
+    padding: 20px 60px;
+    text-align: center;
+    justify-items: center;
+    margin-top: -130px;
+    gap: 10px;
+  }
+
+  .splitLine {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .infoContainer {
+    padding: 20px;
+  }
+}

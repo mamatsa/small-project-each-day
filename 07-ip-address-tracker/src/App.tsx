@@ -5,12 +5,12 @@ import styles from "./styles/App.module.css";
 
 function App() {
   const [ipDetails, setIpDetails] = useState<IpDetails>({
-    ip: "",
-    isp: "",
+    ip: "...",
+    isp: "...",
     location: {
-      country: "",
-      city: "",
-      timezone: "",
+      country: "...",
+      city: "...",
+      timezone: "...",
       lat: 0,
       lng: 0,
     },

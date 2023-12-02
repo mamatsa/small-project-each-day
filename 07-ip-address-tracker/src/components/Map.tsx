@@ -9,7 +9,7 @@ const Map = ({ latitude, longitude }: MapProps) => {
           key={latitude + "" + longitude}
           center={[latitude, longitude]}
           zoom={15}
-          scrollWheelZoom={false}
+          zoomControl={false}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
