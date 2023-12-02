@@ -1,0 +1,26 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.topSection {
+  flex: 0 1 auto;
+  background-image: url("/src/images/pattern-bg-desktop.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: white;
+  margin: 20px 10px;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20gipx;
+  }
+}
