@@ -1,6 +1,6 @@
 import { IconArrow } from "./components";
 import styles from "./styles/App.module.css";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -11,8 +11,8 @@ type IpDetails = {
     country: string;
     city: string;
     timezone: string;
-    lat: string;
-    lng: string;
+    lat: number;
+    lng: number;
   };
 };
 
@@ -24,10 +24,11 @@ function App() {
       country: "",
       city: "",
       timezone: "",
-      lat: "",
-      lng: "",
+      lat: 0,
+      lng: 0,
     },
   });
+
   useEffect(() => {
     const getLocation = async (ipAddress: string) => {
       const res = await axios.get(
@@ -36,6 +37,7 @@ function App() {
         }&ipAddress=${ipAddress}`
       );
       console.log(res.data);
+      console.log(typeof res.data.location.lat);
       setIpDetails(res.data);
     };
 
@@ -47,6 +49,7 @@ function App() {
 
     getUserIPAddress();
   }, []);
+
   return (
     <div className={styles.app}>
       {/* Top Section */}
@@ -96,12 +99,21 @@ function App() {
 
       {/* Map Section */}
       <div className={styles.map}>
-        <MapContainer center={[45.4, -75.7]} zoom={12} scrollWheelZoom={false}>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          />
-        </MapContainer>
+        {ipDetails.ip && (
+          <MapContainer
+            center={[ipDetails.location.lat, ipDetails.location.lng]}
+            zoom={15}
+            scrollWheelZoom={false}
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Marker
+              position={[ipDetails.location.lat, ipDetails.location.lng]}
+            />
+          </MapContainer>
+        )}
       </div>
     </div>
   );
