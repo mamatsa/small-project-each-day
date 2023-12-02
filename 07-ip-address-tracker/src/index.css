@@ -61,20 +61,8 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
-/*
-  8. Create a root stacking context
-*/
+
 #root,
 #__next {
   isolation: isolate;
-}
-
-h1,
-h2,
-h3 {
-  color: hsl(255, 11%, 22%);
-}
-
-p {
-  color: hsl(0, 0%, 75%);
 }
