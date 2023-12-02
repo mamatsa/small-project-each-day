@@ -29,26 +29,25 @@ function App() {
     },
   });
 
+  const getLocation = async (ipAddress: string) => {
+    const res = await axios.get(
+      `https://geo.ipify.org/api/v2/country,city?apiKey=${
+        import.meta.env.VITE_IPIFY_IPI_KEY
+      }&ipAddress=${ipAddress}`
+    );
+    setIpDetails(res.data);
+  };
+
   useEffect(() => {
-    const getLocation = async (ipAddress: string) => {
-      const res = await axios.get(
-        `https://geo.ipify.org/api/v2/country,city?apiKey=${
-          import.meta.env.VITE_IPIFY_IPI_KEY
-        }&ipAddress=${ipAddress}`
-      );
-      console.log(res.data);
-      console.log(typeof res.data.location.lat);
-      setIpDetails(res.data);
-    };
-
-    const getUserIPAddress = async () => {
-      const res = await axios.get("https://api.ipify.org/?format=json");
-      console.log(res.data);
-      getLocation(res.data.ip);
-    };
-
-    getUserIPAddress();
+    // Get user ip address and location
+    getLocation("");
   }, []);
+
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const inputIP = event.currentTarget.ipInput.value;
+    getLocation(inputIP);
+  };
 
   return (
     <div className={styles.app}>
@@ -57,10 +56,12 @@ function App() {
         <h1>IP Address Tracker</h1>
 
         {/* Input field */}
-        <form action="" className={styles.mainForm}>
+        <form action="" className={styles.mainForm} onSubmit={submitHandler}>
           <input
             type="text"
             placeholder="Search for any IP address or domain"
+            name="ipInput"
+            id="ipInput"
           />
           <button>
             <IconArrow />
@@ -101,6 +102,7 @@ function App() {
       <div className={styles.map}>
         {ipDetails.ip && (
           <MapContainer
+            key={JSON.stringify(ipDetails)}
             center={[ipDetails.location.lat, ipDetails.location.lng]}
             zoom={15}
             scrollWheelZoom={false}
