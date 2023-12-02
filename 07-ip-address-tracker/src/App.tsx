@@ -1,8 +1,52 @@
 import { IconArrow } from "./components";
 import styles from "./styles/App.module.css";
 import { MapContainer, TileLayer } from "react-leaflet";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+type IpDetails = {
+  ip: string;
+  isp: string;
+  location: {
+    country: string;
+    city: string;
+    timezone: string;
+    lat: string;
+    lng: string;
+  };
+};
 
 function App() {
+  const [ipDetails, setIpDetails] = useState<IpDetails>({
+    ip: "",
+    isp: "",
+    location: {
+      country: "",
+      city: "",
+      timezone: "",
+      lat: "",
+      lng: "",
+    },
+  });
+  useEffect(() => {
+    const getLocation = async (ipAddress: string) => {
+      const res = await axios.get(
+        `https://geo.ipify.org/api/v2/country,city?apiKey=${
+          import.meta.env.VITE_IPIFY_IPI_KEY
+        }&ipAddress=${ipAddress}`
+      );
+      console.log(res.data);
+      setIpDetails(res.data);
+    };
+
+    const getUserIPAddress = async () => {
+      const res = await axios.get("https://api.ipify.org/?format=json");
+      console.log(res.data);
+      getLocation(res.data.ip);
+    };
+
+    getUserIPAddress();
+  }, []);
   return (
     <div className={styles.app}>
       {/* Top Section */}
@@ -24,27 +68,27 @@ function App() {
         <div className={styles.infoContainer}>
           <div>
             <p>IP ADDRESS</p>
-            <h2>127.0.0.1</h2>
+            <h2>{ipDetails.ip}</h2>
           </div>
           <div className={styles.middleInfo}>
             <div className={styles.splitLine}></div>
             <div>
               <p>LOCATION</p>
-              <h2>Tbilisi, Georgia</h2>
+              <h2>{`${ipDetails.location.country}, ${ipDetails.location.city}`}</h2>
             </div>
           </div>
           <div className={styles.middleInfo}>
             <div className={styles.splitLine}></div>
             <div>
               <p>TIMEZONE</p>
-              <h2>UTC-04:00</h2>
+              <h2>{ipDetails.location.timezone}</h2>
             </div>
           </div>
           <div className={styles.middleInfo}>
             <div className={styles.splitLine}></div>
             <div>
               <p>ISP</p>
-              <h2>Silknet</h2>
+              <h2>{ipDetails.isp}</h2>
             </div>
           </div>
         </div>
