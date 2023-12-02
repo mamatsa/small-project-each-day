@@ -1,20 +1,7 @@
-import { IconArrow } from "./components";
-import styles from "./styles/App.module.css";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-type IpDetails = {
-  ip: string;
-  isp: string;
-  location: {
-    country: string;
-    city: string;
-    timezone: string;
-    lat: number;
-    lng: number;
-  };
-};
+import { SearchForm, IPDetails, Map } from "./components";
+import styles from "./styles/App.module.css";
 
 function App() {
   const [ipDetails, setIpDetails] = useState<IpDetails>({
@@ -29,6 +16,12 @@ function App() {
     },
   });
 
+  // Get user ip address and location on load
+  useEffect(() => {
+    getLocation("");
+  }, []);
+
+  // API call for getting location based on ip address
   const getLocation = async (ipAddress: string) => {
     const res = await axios.get(
       `https://geo.ipify.org/api/v2/country,city?apiKey=${
@@ -38,12 +31,8 @@ function App() {
     setIpDetails(res.data);
   };
 
-  useEffect(() => {
-    // Get user ip address and location
-    getLocation("");
-  }, []);
-
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+  // IP address search handler
+  const searchHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const inputIP = event.currentTarget.ipInput.value;
     getLocation(inputIP);
@@ -54,69 +43,21 @@ function App() {
       {/* Top Section */}
       <div className={styles.topSection}>
         <h1>IP Address Tracker</h1>
-
-        {/* Input field */}
-        <form action="" className={styles.mainForm} onSubmit={submitHandler}>
-          <input
-            type="text"
-            placeholder="Search for any IP address or domain"
-            name="ipInput"
-            id="ipInput"
-          />
-          <button>
-            <IconArrow />
-          </button>
-        </form>
-
-        {/* Result data */}
-        <div className={styles.infoContainer}>
-          <div>
-            <p>IP ADDRESS</p>
-            <h2>{ipDetails.ip}</h2>
-          </div>
-          <div className={styles.middleInfo}>
-            <div className={styles.splitLine}></div>
-            <div>
-              <p>LOCATION</p>
-              <h2>{`${ipDetails.location.country}, ${ipDetails.location.city}`}</h2>
-            </div>
-          </div>
-          <div className={styles.middleInfo}>
-            <div className={styles.splitLine}></div>
-            <div>
-              <p>TIMEZONE</p>
-              <h2>{ipDetails.location.timezone}</h2>
-            </div>
-          </div>
-          <div className={styles.middleInfo}>
-            <div className={styles.splitLine}></div>
-            <div>
-              <p>ISP</p>
-              <h2>{ipDetails.isp}</h2>
-            </div>
-          </div>
-        </div>
+        <SearchForm submitHandler={searchHandler} />
+        <IPDetails
+          ip={ipDetails.ip}
+          city={ipDetails.location.city}
+          country={ipDetails.location.country}
+          timezone={ipDetails.location.timezone}
+          isp={ipDetails.isp}
+        />
       </div>
 
       {/* Map Section */}
-      <div className={styles.map}>
-        {ipDetails.ip && (
-          <MapContainer
-            key={JSON.stringify(ipDetails)}
-            center={[ipDetails.location.lat, ipDetails.location.lng]}
-            zoom={15}
-            scrollWheelZoom={false}
-          >
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            />
-            <Marker
-              position={[ipDetails.location.lat, ipDetails.location.lng]}
-            />
-          </MapContainer>
-        )}
-      </div>
+      <Map
+        latitude={ipDetails.location.lat}
+        longitude={ipDetails.location.lng}
+      />
     </div>
   );
 }
