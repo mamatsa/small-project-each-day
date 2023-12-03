@@ -5,7 +5,7 @@ const IconAdvanced = () => (
     height="40"
     viewBox="0 0 40 40"
   >
-    <g fill="none" fill-rule="evenodd">
+    <g fill="none" fillRule="evenodd">
       <circle cx="20" cy="20" r="20" fill="#F9818E" />
       <path
         fill="#FFF"

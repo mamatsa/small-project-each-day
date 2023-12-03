@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = import("tailwindcss/defaultTheme");
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
   content: ["./index.html", "./src/**/*.tsx"],
@@ -20,6 +20,19 @@ export default {
       "light-gray": "hsl(229, 24%, 87%)",
       magnolia: "hsl(217, 100%, 97%)",
       alabaster: "hsl(231, 100%, 99%)",
+      white: "hsl(0, 0%, 100%)",
+    },
+    backgroundImage: {
+      sidebar: "url('/src/images/bg-sidebar-desktop.svg')",
+      "sidebar-mobile": "url('/src/images/bg-sidebar-mobile.svg')",
+    },
+    borderRadius: {
+      none: "0",
+      sm: "4px",
+      md: "8px",
+      lg: "10px",
+      xl: "15px",
+      full: "9999px",
     },
     extend: {},
   },
