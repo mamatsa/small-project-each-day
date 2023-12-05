@@ -11,7 +11,7 @@ const NavButtons = ({
       style={currentStep > 4 ? { visibility: "hidden" } : {}}
     >
       <button
-        className="text-cool-gray text-sm font-medium"
+        className="text-sm font-medium text-cool-gray"
         onClick={() => {
           onStepChange(currentStep - 1);
         }}
@@ -20,7 +20,9 @@ const NavButtons = ({
         Go Back
       </button>
       <button
-        className="bg-marine-blue w-[100px] rounded-sm py-3 text-sm font-medium text-white"
+        className="w-[100px] rounded-sm bg-marine-blue py-3 text-sm font-medium text-white"
+        type="submit"
+        form="multiStepForm"
         onClick={() => {
           onStepChange(currentStep + 1);
         }}
