@@ -1,10 +1,9 @@
-const SidebarStep = ({
-  step,
-  currentStep,
-}: {
+interface SidebarStepProps {
   step: number;
   currentStep: number;
-}) => {
+}
+
+const SidebarStep = ({ step, currentStep }: SidebarStepProps) => {
   return (
     <div
       className="grid h-8 w-8 place-items-center rounded-full border border-white text-sm font-bold"

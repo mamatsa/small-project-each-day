@@ -1,10 +1,9 @@
-const NavButtons = ({
-  currentStep,
-  onStepChange,
-}: {
+interface NavButtonsProps {
   currentStep: number;
   onStepChange: (newStep: number) => void;
-}) => {
+}
+
+const NavButtons = ({ currentStep, onStepChange }: NavButtonsProps) => {
   return (
     <div
       className="absolute bottom-0 left-0 right-0 flex justify-between bg-white p-4"

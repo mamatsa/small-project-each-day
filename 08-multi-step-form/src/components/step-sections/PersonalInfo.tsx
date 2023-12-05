@@ -1,13 +1,17 @@
 import { Section, Input } from "./components";
 import { useForm, SubmitHandler } from "react-hook-form";
 
-interface IFormValues {
+interface PersonalInfoProps {
+  onSectionSubmit: () => void;
+}
+
+export interface IFormValues {
   Name: string;
   "Email Address": string;
   "Phone Number": string;
 }
 
-const PersonalInfo = ({ onSectionSubmit }: { onSectionSubmit: () => void }) => {
+const PersonalInfo = ({ onSectionSubmit }: PersonalInfoProps) => {
   const {
     register,
     handleSubmit,

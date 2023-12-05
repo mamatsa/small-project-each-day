@@ -1,20 +1,13 @@
 import { Path, UseFormRegister, FieldErrors } from "react-hook-form";
+import { IFormValues } from "../PersonalInfo";
 
-interface IFormValues {
-  Name: string;
-  "Email Address": string;
-  "Phone Number": string;
-}
-
-type InputProps = {
+interface InputProps {
   label: Path<IFormValues>;
   register: UseFormRegister<IFormValues>;
-  placeholder: string;
   errors: FieldErrors<IFormValues>;
   type: string;
-};
-
-const errorStyles = "border-strawberry-red";
+  placeholder: string;
+}
 
 const Input = ({ label, placeholder, register, errors, type }: InputProps) => {
   return (
@@ -43,7 +36,7 @@ const Input = ({ label, placeholder, register, errors, type }: InputProps) => {
         type={type}
         placeholder={placeholder}
         className={`rounded-md border border-light-gray px-4 py-3 font-bold text-marine-blue outline-none ${
-          errors[label] && errorStyles
+          errors[label] && "border-strawberry-red"
         }`}
       />
     </div>
