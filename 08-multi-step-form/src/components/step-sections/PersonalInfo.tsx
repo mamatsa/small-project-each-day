@@ -1,26 +1,29 @@
 import { Section, Input } from "./components";
 import { useForm, SubmitHandler } from "react-hook-form";
 
-interface PersonalInfoProps {
-  onSectionSubmit: () => void;
-}
-
 export interface IFormValues {
   Name: string;
   "Email Address": string;
   "Phone Number": string;
 }
 
-const PersonalInfo = ({ onSectionSubmit }: PersonalInfoProps) => {
+interface PersonalInfoProps {
+  onSectionSubmit: (data: IFormValues) => void;
+  formData: IFormValues;
+}
+
+const PersonalInfo = ({ onSectionSubmit, formData }: PersonalInfoProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormValues>();
+  } = useForm<IFormValues>({
+    defaultValues: formData,
+  });
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     console.log(data);
-    onSectionSubmit();
+    onSectionSubmit(data);
   };
 
   return (

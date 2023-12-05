@@ -8,9 +8,16 @@ import {
   ThankYou,
 } from "components";
 import { useState } from "react";
+import { IFormValues } from "components/step-sections/PersonalInfo";
 
 const App = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({
+    Name: "",
+    "Email Address": "",
+    "Phone Number": "",
+  });
+
   const stepChangeHandler = (newStep: number, sectionPassed?: boolean) => {
     // Always let user go back
     if (newStep < currentStep) setCurrentStep(newStep);
@@ -24,8 +31,9 @@ const App = () => {
     }
   };
 
-  const formSubmitHandler = () => {
+  const formSubmitHandler = (newData: IFormValues) => {
     stepChangeHandler(currentStep + 1, true);
+    setFormData({ ...formData, ...newData });
   };
 
   return (
@@ -34,9 +42,12 @@ const App = () => {
         {/* Sidebar */}
         <Sidebar currentStep={currentStep} />
         <div>
-          {/* Different step sections */}
+          {/* Different form step sections */}
           {currentStep === 1 && (
-            <PersonalInfo onSectionSubmit={formSubmitHandler} />
+            <PersonalInfo
+              onSectionSubmit={formSubmitHandler}
+              formData={formData}
+            />
           )}
           {currentStep === 2 && <SelectPlan />}
           {currentStep === 3 && <PickAddons />}
