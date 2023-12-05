@@ -5,8 +5,8 @@ interface InputProps {
   label: Path<IFormValues>;
   register: UseFormRegister<IFormValues>;
   errors: FieldErrors<IFormValues>;
-  type: string;
   placeholder: string;
+  type?: string;
 }
 
 const Input = ({ label, placeholder, register, errors, type }: InputProps) => {
@@ -33,7 +33,6 @@ const Input = ({ label, placeholder, register, errors, type }: InputProps) => {
             },
           }),
         })}
-        type={type}
         placeholder={placeholder}
         className={`rounded-md border border-light-gray px-4 py-3 font-bold text-marine-blue outline-none ${
           errors[label] && "border-strawberry-red"

@@ -41,21 +41,19 @@ const PersonalInfo = ({ onSectionSubmit, formData }: PersonalInfoProps) => {
           label="Name"
           placeholder="e.g. Stephen King"
           register={register}
-          type="text"
           errors={errors}
         />
         <Input
           label="Email Address"
           placeholder="e.g. stephenking@lorem.com"
           register={register}
-          type="email"
           errors={errors}
+          type="email"
         />
         <Input
           label="Phone Number"
           placeholder="e.g. +995 555 555 555"
           register={register}
-          type="text"
           errors={errors}
         />
       </form>
