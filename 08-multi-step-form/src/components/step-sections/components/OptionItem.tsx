@@ -1,4 +1,4 @@
-interface SelectOptionProps {
+interface OptionItemProps {
   selectedOption: string;
   setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
   title: string;
@@ -7,14 +7,14 @@ interface SelectOptionProps {
   yearly: boolean;
 }
 
-const SelectOption = ({
+const OptionItem = ({
   selectedOption,
   setSelectedOption,
   title,
   price,
   yearly,
   children,
-}: SelectOptionProps) => {
+}: OptionItemProps) => {
   return (
     <div
       className={`flex items-center gap-3 rounded-md border border-light-gray p-4 ${
@@ -41,4 +41,4 @@ const SelectOption = ({
   );
 };
 
-export default SelectOption;
+export default OptionItem;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { IconAdvanced, IconArcade, IconPro } from "components";
-import { PeriodSwitch, Section, SelectOption } from "./components";
+import { PeriodSwitch, Section, OptionItem } from "./components";
 
 interface SelectPlanProps {
   onSectionSubmit: (data: { selectedOption: string; yearly: boolean }) => void;
@@ -31,7 +31,7 @@ const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
           onSectionSubmit({ selectedOption, yearly });
         }}
       >
-        <SelectOption
+        <OptionItem
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
           title="Arcade"
@@ -39,9 +39,9 @@ const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
           yearly={yearly}
         >
           <IconArcade />
-        </SelectOption>
+        </OptionItem>
 
-        <SelectOption
+        <OptionItem
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
           title="Advanced"
@@ -49,9 +49,9 @@ const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
           yearly={yearly}
         >
           <IconAdvanced />
-        </SelectOption>
+        </OptionItem>
 
-        <SelectOption
+        <OptionItem
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
           title="Pro"
@@ -59,7 +59,7 @@ const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
           yearly={yearly}
         >
           <IconPro />
-        </SelectOption>
+        </OptionItem>
 
         <PeriodSwitch yearly={yearly} setYearly={setYearly} />
       </form>

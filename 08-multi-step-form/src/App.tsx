@@ -64,7 +64,7 @@ const App = () => {
               formData={formData}
             />
           )}
-          {currentStep === 3 && <PickAddons />}
+          {currentStep === 3 && <PickAddons yearly={formData.yearly} />}
           {currentStep === 4 && <Summary />}
           {currentStep === 5 && <ThankYou />}
 
