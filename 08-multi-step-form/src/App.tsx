@@ -15,16 +15,22 @@ interface FormData {
   "Phone Number"?: string;
   selectedOption?: string;
   yearly?: boolean;
+  "Online service"?: boolean;
+  "Larger storage"?: boolean;
+  "Customizable profile"?: boolean;
 }
 
 const App = () => {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     Name: "",
     "Email Address": "",
     "Phone Number": "",
     selectedOption: "Arcade",
     yearly: false,
+    "Online service": false,
+    "Larger storage": false,
+    "Customizable profile": false,
   });
 
   const stepChangeHandler = (newStep: number, sectionPassed?: boolean) => {
@@ -64,7 +70,13 @@ const App = () => {
               formData={formData}
             />
           )}
-          {currentStep === 3 && <PickAddons yearly={formData.yearly} />}
+          {currentStep === 3 && (
+            <PickAddons
+              yearly={formData.yearly}
+              onSectionSubmit={formSubmitHandler}
+              formData={formData}
+            />
+          )}
           {currentStep === 4 && <Summary />}
           {currentStep === 5 && <ThankYou />}
 

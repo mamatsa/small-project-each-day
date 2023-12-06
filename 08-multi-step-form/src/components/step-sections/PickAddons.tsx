@@ -1,17 +1,20 @@
 import { useState } from "react";
-import { Section } from "./components";
-import AddonItem from "./components/AddonItem";
+import { Section, AddonItem } from "./components";
+
+interface SectionData {
+  "Online service": boolean;
+  "Larger storage": boolean;
+  "Customizable profile": boolean;
+}
 
 interface PickAddonsProps {
   yearly: boolean;
+  onSectionSubmit: (data: SectionData) => void;
+  formData: SectionData;
 }
 
-const PickAddons = ({ yearly }: PickAddonsProps) => {
-  const [selectedAddons, setSelectedAddons] = useState({
-    "Online service": false,
-    "Larger storage": false,
-    "Customizable profile": false,
-  });
+const PickAddons = ({ yearly, onSectionSubmit, formData }: PickAddonsProps) => {
+  const [selectedAddons, setSelectedAddons] = useState(formData);
 
   return (
     <Section>
@@ -20,7 +23,14 @@ const PickAddons = ({ yearly }: PickAddonsProps) => {
         Add-ons help enhance your gaming experience.
       </p>
 
-      <div className="space-y-3">
+      <form
+        id="multiStepForm"
+        className="space-y-3"
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSectionSubmit(selectedAddons);
+        }}
+      >
         <AddonItem
           title="Online service"
           about="Access to multiplayer games"
@@ -47,7 +57,7 @@ const PickAddons = ({ yearly }: PickAddonsProps) => {
           selected={selectedAddons["Customizable profile"]}
           setSelectedAddons={setSelectedAddons}
         />
-      </div>
+      </form>
     </Section>
   );
 };

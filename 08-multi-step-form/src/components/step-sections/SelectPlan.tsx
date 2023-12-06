@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { IconAdvanced, IconArcade, IconPro } from "components";
 import { PeriodSwitch, Section, OptionItem } from "./components";
 
@@ -8,14 +8,8 @@ interface SelectPlanProps {
 }
 
 const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
-  const [selectedOption, setSelectedOption] = useState("Arcade");
-  const [yearly, setYearly] = useState(false);
-
-  // Set remembered values if user revisits section
-  useEffect(() => {
-    setSelectedOption(formData.selectedOption);
-    setYearly(formData.yearly);
-  }, [formData]);
+  const [selectedOption, setSelectedOption] = useState(formData.selectedOption);
+  const [yearly, setYearly] = useState(formData.yearly);
 
   return (
     <Section>
