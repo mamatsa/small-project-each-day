@@ -11,7 +11,7 @@ import { useState } from "react";
 import { IFormValues } from "components/step-sections/PersonalInfo";
 
 const App = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(2);
   const [formData, setFormData] = useState({
     Name: "",
     "Email Address": "",
