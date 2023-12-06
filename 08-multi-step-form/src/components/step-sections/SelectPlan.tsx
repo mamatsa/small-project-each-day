@@ -1,10 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IconAdvanced, IconArcade, IconPro } from "components";
 import { PeriodSwitch, Section, SelectOption } from "./components";
 
-const SelectPlan = () => {
+interface SelectPlanProps {
+  onSectionSubmit: (data: { selectedOption: string; yearly: boolean }) => void;
+  formData: { selectedOption: string; yearly: boolean };
+}
+
+const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
   const [selectedOption, setSelectedOption] = useState("Arcade");
   const [yearly, setYearly] = useState(false);
+
+  // Set remembered values if user revisits section
+  useEffect(() => {
+    setSelectedOption(formData.selectedOption);
+    setYearly(formData.yearly);
+  }, [formData]);
 
   return (
     <Section>
@@ -12,7 +23,14 @@ const SelectPlan = () => {
       <p className="mb-5 mt-1 text-cool-gray">
         You have the option of monthly or yearly billing.
       </p>
-      <div className="space-y-3">
+      <form
+        className="space-y-3"
+        id="multiStepForm"
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSectionSubmit({ selectedOption, yearly });
+        }}
+      >
         <SelectOption
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
@@ -42,9 +60,9 @@ const SelectPlan = () => {
         >
           <IconPro />
         </SelectOption>
-      </div>
 
-      <PeriodSwitch yearly={yearly} setYearly={setYearly} />
+        <PeriodSwitch yearly={yearly} setYearly={setYearly} />
+      </form>
     </Section>
   );
 };

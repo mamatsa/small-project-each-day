@@ -8,7 +8,14 @@ import {
   ThankYou,
 } from "components";
 import { useState } from "react";
-import { IFormValues } from "components/step-sections/PersonalInfo";
+
+interface FormData {
+  Name?: string;
+  "Email Address"?: string;
+  "Phone Number"?: string;
+  selectedOption?: string;
+  yearly?: boolean;
+}
 
 const App = () => {
   const [currentStep, setCurrentStep] = useState(2);
@@ -16,6 +23,8 @@ const App = () => {
     Name: "",
     "Email Address": "",
     "Phone Number": "",
+    selectedOption: "Arcade",
+    yearly: false,
   });
 
   const stepChangeHandler = (newStep: number, sectionPassed?: boolean) => {
@@ -31,7 +40,7 @@ const App = () => {
     }
   };
 
-  const formSubmitHandler = (newData: IFormValues) => {
+  const formSubmitHandler = (newData: FormData) => {
     stepChangeHandler(currentStep + 1, true);
     setFormData({ ...formData, ...newData });
   };
@@ -49,7 +58,12 @@ const App = () => {
               formData={formData}
             />
           )}
-          {currentStep === 2 && <SelectPlan />}
+          {currentStep === 2 && (
+            <SelectPlan
+              onSectionSubmit={formSubmitHandler}
+              formData={formData}
+            />
+          )}
           {currentStep === 3 && <PickAddons />}
           {currentStep === 4 && <Summary />}
           {currentStep === 5 && <ThankYou />}
