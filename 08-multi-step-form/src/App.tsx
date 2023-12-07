@@ -22,7 +22,7 @@ export interface FormData {
 }
 
 const App = () => {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
     Name: "",
     "Email Address": "",
