@@ -15,19 +15,21 @@ export interface FormData {
   "Phone Number": string;
   selectedOption: "Arcade" | "Advanced" | "Pro";
   yearly: boolean;
+  optionPrice: number;
   "Online service": boolean;
   "Larger storage": boolean;
   "Customizable profile": boolean;
 }
 
 const App = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(4);
   const [formData, setFormData] = useState<FormData>({
     Name: "",
     "Email Address": "",
     "Phone Number": "",
     selectedOption: "Arcade",
     yearly: false,
+    optionPrice: 9,
     "Online service": false,
     "Larger storage": false,
     "Customizable profile": false,

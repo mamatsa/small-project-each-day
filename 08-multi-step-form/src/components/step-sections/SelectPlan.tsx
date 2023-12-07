@@ -3,6 +3,12 @@ import { IconAdvanced, IconArcade, IconPro } from "components";
 import { PeriodSwitch, Section, OptionItem } from "./components";
 import { FormData } from "App";
 
+const optionPrices = {
+  Arcade: 9,
+  Advanced: 12,
+  Pro: 15,
+};
+
 interface SelectPlanProps {
   onSectionSubmit: (data: FormData) => void;
   formData: FormData;
@@ -23,14 +29,19 @@ const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
         id="multiStepForm"
         onSubmit={(e) => {
           e.preventDefault();
-          onSectionSubmit({ ...formData, selectedOption, yearly });
+          onSectionSubmit({
+            ...formData,
+            selectedOption,
+            yearly,
+            optionPrice: optionPrices[selectedOption],
+          });
         }}
       >
         <OptionItem
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
           title="Arcade"
-          price={9}
+          price={optionPrices["Arcade"]}
           yearly={yearly}
         >
           <IconArcade />
@@ -40,7 +51,7 @@ const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
           title="Advanced"
-          price={12}
+          price={optionPrices["Advanced"]}
           yearly={yearly}
         >
           <IconAdvanced />
@@ -50,7 +61,7 @@ const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
           title="Pro"
-          price={15}
+          price={optionPrices["Pro"]}
           yearly={yearly}
         >
           <IconPro />
