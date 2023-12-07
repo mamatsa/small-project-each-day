@@ -24,6 +24,8 @@ const Input = ({ label, placeholder, register, errors, type }: InputProps) => {
         )}
       </div>
       <input
+        autoComplete="on"
+        id={label}
         {...register(label, {
           required: { value: true, message: "This field is required" },
           ...(type === "email" && {
