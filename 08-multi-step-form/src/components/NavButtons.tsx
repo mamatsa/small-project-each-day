@@ -19,15 +19,14 @@ const NavButtons = ({ currentStep, onStepChange }: NavButtonsProps) => {
         Go Back
       </button>
       <button
-        className="md:hover:bg-hover-blue w-[100px] rounded-sm bg-marine-blue py-3 text-sm font-medium text-white md:rounded-md md:text-base"
+        className={`w-[100px] whitespace-nowrap rounded-sm bg-marine-blue py-3 text-sm font-medium text-white md:w-[130px] md:rounded-md md:text-base md:hover:bg-hover-blue ${
+          currentStep === 4 && "bg-purplish-blue md:hover:bg-pastel-blue"
+        }`}
         type="submit"
         form="multiStepForm"
         onClick={() => {
           onStepChange(currentStep + 1);
         }}
-        style={
-          currentStep === 4 ? { backgroundColor: "hsl(243, 100%, 62%)" } : {}
-        }
       >
         {currentStep === 4 ? "Confirm" : "Next Step"}
       </button>
