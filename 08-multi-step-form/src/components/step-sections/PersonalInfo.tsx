@@ -1,5 +1,6 @@
 import { Section, Input } from "./components";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { FormData } from "App";
 
 export interface IFormValues {
   Name: string;
@@ -8,8 +9,8 @@ export interface IFormValues {
 }
 
 interface PersonalInfoProps {
-  onSectionSubmit: (data: IFormValues) => void;
-  formData: IFormValues;
+  onSectionSubmit: (data: FormData) => void;
+  formData: FormData;
 }
 
 const PersonalInfo = ({ onSectionSubmit, formData }: PersonalInfoProps) => {
@@ -23,7 +24,7 @@ const PersonalInfo = ({ onSectionSubmit, formData }: PersonalInfoProps) => {
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
     console.log(data);
-    onSectionSubmit(data);
+    onSectionSubmit({ ...formData, ...data });
   };
 
   return (

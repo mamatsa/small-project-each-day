@@ -9,20 +9,20 @@ import {
 } from "components";
 import { useState } from "react";
 
-interface FormData {
-  Name?: string;
-  "Email Address"?: string;
-  "Phone Number"?: string;
-  selectedOption?: string;
-  yearly?: boolean;
-  "Online service"?: boolean;
-  "Larger storage"?: boolean;
-  "Customizable profile"?: boolean;
+export interface FormData {
+  Name: string;
+  "Email Address": string;
+  "Phone Number": string;
+  selectedOption: "Arcade" | "Advanced" | "Pro";
+  yearly: boolean;
+  "Online service": boolean;
+  "Larger storage": boolean;
+  "Customizable profile": boolean;
 }
 
 const App = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     Name: "",
     "Email Address": "",
     "Phone Number": "",
@@ -77,7 +77,7 @@ const App = () => {
               formData={formData}
             />
           )}
-          {currentStep === 4 && <Summary />}
+          {currentStep === 4 && <Summary formData={formData} />}
           {currentStep === 5 && <ThankYou />}
 
           {/* Navigation Buttons */}

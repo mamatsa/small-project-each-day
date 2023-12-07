@@ -1,7 +1,9 @@
 interface OptionItemProps {
   selectedOption: string;
-  setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
-  title: string;
+  setSelectedOption: React.Dispatch<
+    React.SetStateAction<"Arcade" | "Advanced" | "Pro">
+  >;
+  title: "Arcade" | "Advanced" | "Pro";
   price: number;
   children: React.ReactNode;
   yearly: boolean;

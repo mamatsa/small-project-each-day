@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { Section, AddonItem } from "./components";
-
-interface SectionData {
-  "Online service": boolean;
-  "Larger storage": boolean;
-  "Customizable profile": boolean;
-}
+import { FormData } from "App";
 
 interface PickAddonsProps {
   yearly: boolean;
-  onSectionSubmit: (data: SectionData) => void;
-  formData: SectionData;
+  onSectionSubmit: (data: FormData) => void;
+  formData: FormData;
 }
 
 const PickAddons = ({ yearly, onSectionSubmit, formData }: PickAddonsProps) => {

@@ -1,16 +1,12 @@
+import { FormData } from "App";
+
 interface AddonItemProps {
   title: string;
   about: string;
   yearly: boolean;
   price: number;
   selected: boolean;
-  setSelectedAddons: React.Dispatch<
-    React.SetStateAction<{
-      "Online service": boolean;
-      "Larger storage": boolean;
-      "Customizable profile": boolean;
-    }>
-  >;
+  setSelectedAddons: React.Dispatch<React.SetStateAction<FormData>>;
 }
 
 const AddonItem = ({

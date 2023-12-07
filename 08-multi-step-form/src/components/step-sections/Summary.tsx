@@ -1,9 +1,18 @@
 import { Section } from "./components";
+import { FormData } from "App";
 
-const Summary = () => {
+interface SummaryProps {
+  formData: FormData;
+}
+
+const Summary = ({ formData }: SummaryProps) => {
+  console.log(formData);
   return (
     <Section>
-      <h1 className="text-marine-blue text-2xl font-bold">Finishing Up</h1>
+      <h1 className="text-2xl font-bold text-marine-blue">Finishing Up</h1>
+      <p className="mb-5 mt-1 text-cool-gray">
+        Double-check everything looks OK before confirming.
+      </p>
     </Section>
   );
 };

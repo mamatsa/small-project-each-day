@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { IconAdvanced, IconArcade, IconPro } from "components";
 import { PeriodSwitch, Section, OptionItem } from "./components";
+import { FormData } from "App";
 
 interface SelectPlanProps {
-  onSectionSubmit: (data: { selectedOption: string; yearly: boolean }) => void;
-  formData: { selectedOption: string; yearly: boolean };
+  onSectionSubmit: (data: FormData) => void;
+  formData: FormData;
 }
 
 const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
@@ -22,7 +23,7 @@ const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
         id="multiStepForm"
         onSubmit={(e) => {
           e.preventDefault();
-          onSectionSubmit({ selectedOption, yearly });
+          onSectionSubmit({ ...formData, selectedOption, yearly });
         }}
       >
         <OptionItem
