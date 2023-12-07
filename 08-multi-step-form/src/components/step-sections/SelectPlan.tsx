@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IconAdvanced, IconArcade, IconPro } from "components";
-import { PeriodSwitch, Section, OptionItem } from "./components";
+import { PeriodSwitch, Section, OptionItem, Title } from "./components";
 import { FormData } from "App";
 
 const optionPrices = {
@@ -20,12 +20,12 @@ const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
 
   return (
     <Section>
-      <h1 className="text-2xl font-bold text-marine-blue">Select your plan</h1>
-      <p className="mb-5 mt-1 text-cool-gray">
-        You have the option of monthly or yearly billing.
-      </p>
+      <Title
+        title="Select your plan"
+        description="You have the option of monthly or yearly billing."
+      />
       <form
-        className="space-y-3"
+        className="space-y-3 md:space-y-6"
         id="multiStepForm"
         onSubmit={(e) => {
           e.preventDefault();
@@ -37,35 +37,37 @@ const SelectPlan = ({ onSectionSubmit, formData }: SelectPlanProps) => {
           });
         }}
       >
-        <OptionItem
-          selectedOption={selectedOption}
-          setSelectedOption={setSelectedOption}
-          title="Arcade"
-          price={optionPrices["Arcade"]}
-          yearly={yearly}
-        >
-          <IconArcade />
-        </OptionItem>
+        <div className="space-y-3 md:grid md:grid-cols-3 md:space-x-3 md:space-y-0">
+          <OptionItem
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            title="Arcade"
+            price={optionPrices["Arcade"]}
+            yearly={yearly}
+          >
+            <IconArcade />
+          </OptionItem>
 
-        <OptionItem
-          selectedOption={selectedOption}
-          setSelectedOption={setSelectedOption}
-          title="Advanced"
-          price={optionPrices["Advanced"]}
-          yearly={yearly}
-        >
-          <IconAdvanced />
-        </OptionItem>
+          <OptionItem
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            title="Advanced"
+            price={optionPrices["Advanced"]}
+            yearly={yearly}
+          >
+            <IconAdvanced />
+          </OptionItem>
 
-        <OptionItem
-          selectedOption={selectedOption}
-          setSelectedOption={setSelectedOption}
-          title="Pro"
-          price={optionPrices["Pro"]}
-          yearly={yearly}
-        >
-          <IconPro />
-        </OptionItem>
+          <OptionItem
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            title="Pro"
+            price={optionPrices["Pro"]}
+            yearly={yearly}
+          >
+            <IconPro />
+          </OptionItem>
+        </div>
 
         <PeriodSwitch yearly={yearly} setYearly={setYearly} />
       </form>

@@ -19,7 +19,7 @@ const AddonItem = ({
 }: AddonItemProps) => {
   return (
     <div
-      className={`flex items-center justify-between rounded-md border border-light-gray p-4 ${
+      className={`flex items-center justify-between rounded-md border border-light-gray p-4 md:cursor-pointer ${
         selected && "border-purplish-blue bg-magnolia"
       }`}
       onClick={() => {
@@ -37,11 +37,11 @@ const AddonItem = ({
           name="checkbox"
         />
         <div className="space-y-0.5">
-          <h3 className="text-sm text-marine-blue">{title}</h3>
-          <p className="text-xs text-cool-gray">{about}</p>
+          <h3 className="text-sm text-marine-blue md:text-base">{title}</h3>
+          <p className="text-xs text-cool-gray md:text-sm">{about}</p>
         </div>
       </div>
-      <p className="text-xs text-purplish-blue">
+      <p className="text-xs text-purplish-blue md:text-sm">
         {yearly ? `+$${price * 10}/yr` : `+$${price}/mo`}
       </p>
     </div>

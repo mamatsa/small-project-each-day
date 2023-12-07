@@ -1,16 +1,10 @@
-import { Section } from "./components";
+import { Section, Title } from "./components";
 import { FormData } from "App";
 
 interface SummaryProps {
   formData: FormData;
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
 }
-
-// const addonPrices = {
-//   "Online service": 1,
-//   "Larger storage": 2,
-//   "Customizable profile": 2,
-// };
 
 const Summary = ({ formData, setCurrentStep }: SummaryProps) => {
   const period = formData.yearly ? "yr" : "mo";
@@ -22,20 +16,20 @@ const Summary = ({ formData, setCurrentStep }: SummaryProps) => {
     10 ** Number(formData.yearly);
   return (
     <Section>
-      <h1 className="text-2xl font-bold text-marine-blue">Finishing Up</h1>
-      <p className="mb-5 mt-1 text-cool-gray">
-        Double-check everything looks OK before confirming.
-      </p>
+      <Title
+        title="Finishing up"
+        description="Double-check everything looks OK before confirming."
+      />
       <div className="rounded-md bg-magnolia p-4 text-sm">
         {/* Plan */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between md:text-base">
           <div>
             <h3 className="font-medium text-marine-blue">
               {formData.selectedOption} (
               {formData.yearly ? "Yearly" : "Monthly"})
             </h3>
             <button
-              className="text-cool-gray underline"
+              className="text-cool-gray underline md:text-sm"
               onClick={() => {
                 setCurrentStep(2);
               }}
@@ -86,7 +80,7 @@ const Summary = ({ formData, setCurrentStep }: SummaryProps) => {
         <h4 className="text-sm text-cool-gray">
           Total (per {formData.yearly ? "year" : "month"})
         </h4>
-        <p className="font-semibold text-purplish-blue">
+        <p className="font-semibold text-purplish-blue md:text-xl">
           ${finalPrice}/{period}
         </p>
       </div>

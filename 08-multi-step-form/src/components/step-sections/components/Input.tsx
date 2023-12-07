@@ -11,14 +11,14 @@ interface InputProps {
 
 const Input = ({ label, placeholder, register, errors, type }: InputProps) => {
   return (
-    <div className="mb-4 flex flex-col text-marine-blue">
-      <div className="flex items-center justify-between text-xs">
+    <div className="mb-4 flex flex-col text-marine-blue md:gap-1">
+      <div className="flex items-center justify-between text-xs md:text-sm">
         <label htmlFor={label} className="text-marine-blue">
           {label}
         </label>
         {/* Error message */}
         {errors[label] && (
-          <p role="alert" className="text-strawberry-red">
+          <p role="alert" className="text-strawberry-red md:font-medium">
             {errors[label]?.message}
           </p>
         )}

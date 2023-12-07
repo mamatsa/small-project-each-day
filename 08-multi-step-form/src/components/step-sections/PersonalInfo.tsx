@@ -1,4 +1,4 @@
-import { Section, Input } from "./components";
+import { Section, Input, Title } from "./components";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormData } from "App";
 
@@ -28,15 +28,11 @@ const PersonalInfo = ({ onSectionSubmit, formData }: PersonalInfoProps) => {
 
   return (
     <Section>
-      <h1 className="text-2xl font-bold text-marine-blue">Personal info</h1>
-      <p className="mt-1 text-cool-gray">
-        Please provide your name, email address, and phone number.
-      </p>
-      <form
-        id="multiStepForm"
-        className="mt-5"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <Title
+        title="Personal info"
+        description="Please provide your name, email address, and phone number."
+      />
+      <form id="multiStepForm" onSubmit={handleSubmit(onSubmit)}>
         <Input
           label="Name"
           placeholder="e.g. Stephen King"

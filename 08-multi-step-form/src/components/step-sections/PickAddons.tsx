@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Section, AddonItem } from "./components";
+import { Section, AddonItem, Title } from "./components";
 import { FormData } from "App";
 
 interface PickAddonsProps {
@@ -13,11 +13,10 @@ const PickAddons = ({ yearly, onSectionSubmit, formData }: PickAddonsProps) => {
 
   return (
     <Section>
-      <h1 className="text-2xl font-bold text-marine-blue">Pick add-ons</h1>
-      <p className="mb-4 mt-1 text-cool-gray">
-        Add-ons help enhance your gaming experience.
-      </p>
-
+      <Title
+        title="Pick add-ons"
+        description="Add-ons help enhance your gaming experience."
+      />
       <form
         id="multiStepForm"
         className="space-y-3"

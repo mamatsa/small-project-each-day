@@ -22,7 +22,7 @@ export interface FormData {
 }
 
 const App = () => {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(2);
   const [formData, setFormData] = useState<FormData>({
     Name: "",
     "Email Address": "",
@@ -55,12 +55,12 @@ const App = () => {
 
   return (
     <div className="flex h-screen w-full items-start justify-center bg-magnolia md:items-center md:p-10">
-      <div className="rounded-md bg-white md:relative md:flex md:h-full md:w-full md:max-w-5xl md:rounded-xl md:p-4">
+      <div className="rounded-md bg-white md:relative md:flex md:h-full md:max-h-[600px] md:w-full md:max-w-5xl md:rounded-xl md:p-4">
         {/* Sidebar */}
         <Sidebar currentStep={currentStep} />
 
         {/* Different form step sections */}
-        <div className="md:flex md:h-full md:w-full md:flex-col md:justify-between md:gap-5 md:px-10">
+        <div className="md:flex md:h-full md:w-full md:flex-col md:items-center md:justify-between md:gap-5 md:px-10">
           {currentStep === 1 && (
             <PersonalInfo
               onSectionSubmit={formSubmitHandler}

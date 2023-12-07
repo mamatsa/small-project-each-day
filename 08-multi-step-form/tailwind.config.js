@@ -15,6 +15,7 @@ export default {
       "pastel-blue": "hsl(228, 100%, 84%)",
       "light-blue": "hsl(206, 94%, 87%)",
       "strawberry-red": "hsl(354, 84%, 57%)",
+      "hover-blue": "#164A8A",
       // Neutral
       "cool-gray": "hsl(231, 11%, 63%)",
       "light-gray": "hsl(229, 24%, 87%)",
