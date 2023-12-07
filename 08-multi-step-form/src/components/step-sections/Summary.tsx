@@ -3,6 +3,7 @@ import { FormData } from "App";
 
 interface SummaryProps {
   formData: FormData;
+  setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
 // const addonPrices = {
@@ -11,7 +12,7 @@ interface SummaryProps {
 //   "Customizable profile": 2,
 // };
 
-const Summary = ({ formData }: SummaryProps) => {
+const Summary = ({ formData, setCurrentStep }: SummaryProps) => {
   const period = formData.yearly ? "yr" : "mo";
   const finalPrice =
     (formData.optionPrice +
@@ -33,7 +34,14 @@ const Summary = ({ formData }: SummaryProps) => {
               {formData.selectedOption} (
               {formData.yearly ? "Yearly" : "Monthly"})
             </h3>
-            <p className="text-cool-gray underline">Change</p>
+            <button
+              className="text-cool-gray underline"
+              onClick={() => {
+                setCurrentStep(2);
+              }}
+            >
+              Change
+            </button>
           </div>
           <p className="font-bold text-marine-blue">
             ${formData.optionPrice * 10 ** Number(formData.yearly)}/{period}

@@ -79,7 +79,9 @@ const App = () => {
               formData={formData}
             />
           )}
-          {currentStep === 4 && <Summary formData={formData} />}
+          {currentStep === 4 && (
+            <Summary formData={formData} setCurrentStep={setCurrentStep} />
+          )}
           {currentStep === 5 && <ThankYou />}
 
           {/* Navigation Buttons */}
