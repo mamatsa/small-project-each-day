@@ -23,7 +23,6 @@ const PersonalInfo = ({ onSectionSubmit, formData }: PersonalInfoProps) => {
   });
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
-    console.log(data);
     onSectionSubmit({ ...formData, ...data });
   };
 

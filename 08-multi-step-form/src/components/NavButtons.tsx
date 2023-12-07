@@ -6,7 +6,7 @@ interface NavButtonsProps {
 const NavButtons = ({ currentStep, onStepChange }: NavButtonsProps) => {
   return (
     <div
-      className="absolute bottom-0 left-0 right-0 flex justify-between bg-white p-4"
+      className="absolute bottom-0 left-0 right-0 flex justify-between bg-white p-4 md:static md:w-full"
       style={currentStep > 4 ? { visibility: "hidden" } : {}}
     >
       <button
