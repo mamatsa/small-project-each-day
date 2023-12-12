@@ -1,11 +1,16 @@
-import { IconCorrect, IconIncorrect } from "components";
 import { useEffect, useState } from "react";
+import {
+  ErrorMessage,
+  OptionItem,
+  SubmitButton,
+  QuizHeader,
+} from "./components";
 
 interface QuizProps {
   subject: string;
 }
 
-interface Question {
+export interface Question {
   question: string;
   options: [string, string, string, string];
   answer: string;
@@ -19,6 +24,7 @@ const Quiz = ({ subject }: QuizProps) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    // Get questions from json file in public directory
     const getQuestions = async () => {
       const response = await fetch("/public/data.json");
       const data = await response.json();
@@ -42,102 +48,39 @@ const Quiz = ({ subject }: QuizProps) => {
     }
   };
 
+  const optionSelectHandler = (optionIndex: number) => {
+    setSelectedOption(optionIndex + 1);
+    setError(false);
+  };
+
   return (
     <div>
-      <div>
-        <p className="mb-3 text-sm italic">Question {progress + 1} of 10</p>
-        <h2 className="mb-6 text-xl font-medium">
-          {questions[progress]?.question}
-        </h2>
-        <div className="mb-8 h-2.5 w-full rounded-full bg-white">
-          <div
-            className="h-2.5 rounded-full bg-blue-600"
-            style={{ width: progress * 10 + "%" }}
-          ></div>
-        </div>
-      </div>
-
+      {/* Quiz question and progress identifier */}
+      <QuizHeader progress={progress} questions={questions} />
+      {/* Answer options */}
       <ul className="space-y-3">
         {questions[progress]?.options.map((option, index) => {
           return (
-            <li
+            <OptionItem
+              optionIndex={index}
+              option={option}
+              correctAnswer={correctAnswer}
+              onOptionSelect={optionSelectHandler}
+              selectedOption={selectedOption}
               key={option}
-              className={`grid w-full grid-cols-[40px_1fr_28px] items-center rounded-xl bg-white p-3 -outline-offset-[3px] ${
-                selectedOption === index + 1 &&
-                "outline-purple outline outline-[3px]"
-              } ${
-                correctAnswer &&
-                selectedOption === index + 1 &&
-                "outline-green outline outline-[3px]"
-              } ${
-                correctAnswer &&
-                correctAnswer !== option &&
-                selectedOption === index + 1 &&
-                "outline-red outline outline-[3px]"
-              }`}
-              onClick={() => {
-                setSelectedOption(index + 1);
-                setError(false);
-              }}
-            >
-              {/* Question Number */}
-              <div
-                className={`text-gray-navy bg-light-gray flex h-10 w-10 items-center justify-center rounded-md text-lg font-medium ${
-                  selectedOption === index + 1 && "bg-purple text-white"
-                } ${
-                  correctAnswer &&
-                  selectedOption === index + 1 &&
-                  "bg-green text-white"
-                } ${
-                  correctAnswer &&
-                  correctAnswer !== option &&
-                  selectedOption === index + 1 &&
-                  "bg-red"
-                }`}
-              >
-                {index + 1}
-              </div>
-
-              {/* Option text */}
-              <p className="w-fit break-words pl-3 text-lg font-medium">
-                {option}
-              </p>
-
-              {/* Correct answer sign */}
-              {option === correctAnswer && (
-                <div className="h-7 w-7">
-                  <IconCorrect />
-                </div>
-              )}
-
-              {/* Incorrect answer sign */}
-              {correctAnswer &&
-                option !== correctAnswer &&
-                selectedOption === index + 1 && (
-                  <div className=" h-7 w-7">
-                    <IconIncorrect />
-                  </div>
-                )}
-            </li>
+            />
           );
         })}
       </ul>
 
-      <button
-        className="bg-purple my-3 w-full rounded-xl py-4 text-lg font-medium text-white"
-        onClick={questionSubmitHandler}
-      >
-        {correctAnswer ? "Next Question" : "Submit Answer"}
-      </button>
+      {/* Answer submit and next question button */}
+      <SubmitButton
+        onQuestionSubmit={questionSubmitHandler}
+        correctAnswer={correctAnswer}
+      />
 
-      {error && (
-        <p className="text-red flex w-full items-center justify-center gap-2 text-lg">
-          <div className="h-7 w-7">
-            <IconIncorrect />
-          </div>
-          Please select an answer
-        </p>
-      )}
+      {/* Error if no answer is selected on submit */}
+      {error && <ErrorMessage />}
     </div>
   );
 };

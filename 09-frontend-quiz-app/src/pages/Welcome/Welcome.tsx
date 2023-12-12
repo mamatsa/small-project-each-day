@@ -24,7 +24,7 @@ const Welcome = ({ onQuizChoose }: WelcomeProps) => {
           <CSSLogo />
         </MenuItem>
 
-        <MenuItem title="Javascript" onQuizChoose={onQuizChoose}>
+        <MenuItem title="JavaScript" onQuizChoose={onQuizChoose}>
           <JavaScriptLogo />
         </MenuItem>
 
