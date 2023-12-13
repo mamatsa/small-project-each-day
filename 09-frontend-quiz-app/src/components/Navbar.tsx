@@ -9,6 +9,7 @@ import {
 
 interface NavbarProps {
   quizSubject: Subject;
+  onThemeChange: () => void;
 }
 
 const quizIcons = {
@@ -18,7 +19,7 @@ const quizIcons = {
   Accessibility: Accessibility,
 };
 
-const Navbar = ({ quizSubject }: NavbarProps) => {
+const Navbar = ({ quizSubject, onThemeChange }: NavbarProps) => {
   const QuizIcon = quizIcons[quizSubject || "HTML"];
 
   return (
@@ -27,7 +28,7 @@ const Navbar = ({ quizSubject }: NavbarProps) => {
         <span className="block h-10 w-10">{quizSubject && <QuizIcon />}</span>
         <p className="text-lg font-medium">{quizSubject}</p>
       </div>
-      <ThemeToggle />
+      <ThemeToggle onThemeChange={onThemeChange} />
     </div>
   );
 };
