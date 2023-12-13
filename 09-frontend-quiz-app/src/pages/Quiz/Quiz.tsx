@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
+import { Subject } from "App";
 import {
   ErrorMessage,
   OptionItem,
   SubmitButton,
   QuizHeader,
+  QuizResult,
 } from "./components";
 
 interface QuizProps {
-  subject: string;
+  subject: Subject;
+  onQuizRestart: () => void;
 }
 
 export interface Question {
@@ -16,11 +19,12 @@ export interface Question {
   answer: string;
 }
 
-const Quiz = ({ subject }: QuizProps) => {
+const Quiz = ({ subject, onQuizRestart }: QuizProps) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [progress, setProgress] = useState(0);
   const [selectedOption, setSelectedOption] = useState(0);
   const [correctAnswer, setCorrectAnswer] = useState("");
+  const [score, setScore] = useState(0);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -28,20 +32,27 @@ const Quiz = ({ subject }: QuizProps) => {
     const getQuestions = async () => {
       const response = await fetch("/public/data.json");
       const data = await response.json();
-      const quizQuestions = data.quizzes.filter(
+      const quiz = data.quizzes.filter(
         (quiz: { title: string }) => quiz.title === subject,
       );
-      setQuestions(quizQuestions[0].questions);
+      setQuestions(quiz[0].questions);
     };
     getQuestions();
   }, [subject]);
 
   const questionSubmitHandler = () => {
     if (!selectedOption) {
+      // No answer is selected
       setError(true);
     } else if (!correctAnswer) {
+      // Find out correct answer when user submits his answer
       setCorrectAnswer(questions[progress].answer);
     } else {
+      // Next question
+      if (correctAnswer === questions[progress].options[selectedOption - 1]) {
+        // Increase score if answer is user correct
+        setScore(score + 1);
+      }
       setCorrectAnswer("");
       setProgress(progress + 1);
       setSelectedOption(0);
@@ -54,34 +65,46 @@ const Quiz = ({ subject }: QuizProps) => {
   };
 
   return (
-    <div>
-      {/* Quiz question and progress identifier */}
-      <QuizHeader progress={progress} questions={questions} />
-      {/* Answer options */}
-      <ul className="space-y-3">
-        {questions[progress]?.options.map((option, index) => {
-          return (
-            <OptionItem
-              optionIndex={index}
-              option={option}
-              correctAnswer={correctAnswer}
-              onOptionSelect={optionSelectHandler}
-              selectedOption={selectedOption}
-              key={option}
-            />
-          );
-        })}
-      </ul>
+    <>
+      {progress < 10 && (
+        <div>
+          {/* Quiz question and progress identifier */}
+          <QuizHeader progress={progress} questions={questions} />
+          {/* Answer options */}
+          <ul className="space-y-3">
+            {questions[progress]?.options.map((option, index) => {
+              return (
+                <OptionItem
+                  optionIndex={index}
+                  option={option}
+                  correctAnswer={correctAnswer}
+                  onOptionSelect={optionSelectHandler}
+                  selectedOption={selectedOption}
+                  key={option}
+                />
+              );
+            })}
+          </ul>
 
-      {/* Answer submit and next question button */}
-      <SubmitButton
-        onQuestionSubmit={questionSubmitHandler}
-        correctAnswer={correctAnswer}
-      />
+          {/* Answer submit and next question button */}
+          <SubmitButton
+            onQuestionSubmit={questionSubmitHandler}
+            correctAnswer={correctAnswer}
+          />
 
-      {/* Error if no answer is selected on submit */}
-      {error && <ErrorMessage />}
-    </div>
+          {/* Error if no answer is selected on submit */}
+          {error && <ErrorMessage />}
+        </div>
+      )}
+
+      {progress === 10 && (
+        <QuizResult
+          subject={subject}
+          onQuizRestart={onQuizRestart}
+          score={score}
+        />
+      )}
+    </>
   );
 };
 

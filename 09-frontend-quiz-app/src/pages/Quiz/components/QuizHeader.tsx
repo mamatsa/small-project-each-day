@@ -12,9 +12,9 @@ const QuizHeader = ({ questions, progress }: QuizHeaderProps) => {
       <h2 className="mb-6 text-xl font-medium">
         {questions[progress]?.question}
       </h2>
-      <div className="mb-8 h-2.5 w-full rounded-full bg-white">
+      <div className="mb-8 h-4 w-full rounded-full bg-white p-1">
         <div
-          className="h-2.5 rounded-full bg-blue-600"
+          className="h-2 rounded-full bg-purple"
           style={{ width: progress * 10 + "%" }}
         ></div>
       </div>

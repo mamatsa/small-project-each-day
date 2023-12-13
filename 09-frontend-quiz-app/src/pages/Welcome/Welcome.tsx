@@ -1,8 +1,9 @@
 import { HTMLLogo, CSSLogo, JavaScriptLogo, Accessibility } from "components";
 import { MenuItem } from "./components";
+import { Subject } from "App";
 
 interface WelcomeProps {
-  onQuizChoose: (subject: string) => void;
+  onQuizChoose: (subject: Subject) => void;
 }
 
 const Welcome = ({ onQuizChoose }: WelcomeProps) => {

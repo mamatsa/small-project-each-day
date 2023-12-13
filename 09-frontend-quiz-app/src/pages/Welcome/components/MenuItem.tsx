@@ -1,6 +1,8 @@
+import { Subject } from "App";
+
 interface MenuItemProps {
-  title: string;
-  onQuizChoose: (subject: string) => void;
+  title: Subject;
+  onQuizChoose: (subject: Subject) => void;
   children: React.ReactNode;
 }
 
