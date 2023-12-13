@@ -18,7 +18,7 @@ const App = () => {
 
   return (
     <div className={`h-screen w-full ${darkMode && "dark"}`}>
-      <div className="bg-pattern-mobile sm:bg-pattern-tablet lg:bg-pattern-desktop dark:bg-pattern-mobile-dark h-screen bg-light-gray bg-no-repeat px-6 pb-6 dark:bg-dark-navy">
+      <div className="bg-pattern-mobile sm:bg-pattern-tablet lg:bg-pattern-desktop dark:bg-pattern-mobile-dark h-screen bg-light-gray bg-no-repeat px-6 pb-6 dark:bg-dark-navy sm:px-16">
         <Navbar quizSubject={quizSubject} onThemeChange={themeChangeHandler} />
 
         {/* Display welcome page if quiz subject is not picked yet */}
