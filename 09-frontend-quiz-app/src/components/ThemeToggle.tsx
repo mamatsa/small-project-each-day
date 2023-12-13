@@ -11,9 +11,7 @@ const ThemeToggle = ({ onThemeChange }: ThemeToggleProps) => {
 
   return (
     <div className="flex items-center gap-2">
-      <div className="h-4 w-4">
-        <LightModeIcon />
-      </div>
+      <LightModeIcon />
       <Switch
         checked={darkMode}
         onChange={(checked) => {
@@ -28,9 +26,7 @@ const ThemeToggle = ({ onThemeChange }: ThemeToggleProps) => {
           } inline-block h-3 w-3 transform rounded-full bg-white transition`}
         />
       </Switch>
-      <div className="h-4 w-4">
-        <DarkModeIcon />
-      </div>
+      <DarkModeIcon />
     </div>
   );
 };

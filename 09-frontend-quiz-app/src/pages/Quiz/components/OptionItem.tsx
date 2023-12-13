@@ -17,7 +17,7 @@ const OptionItem = ({
 }: OptionItemProps) => {
   return (
     <li
-      className={`grid w-full grid-cols-[40px_1fr_28px] items-center rounded-xl bg-white p-3 -outline-offset-[3px] ${
+      className={`grid w-full grid-cols-[40px_1fr_28px] items-center rounded-xl bg-white p-3 -outline-offset-[3px] dark:bg-navy ${
         selectedOption === optionIndex + 1 &&
         "outline outline-[3px] outline-purple"
       } ${
@@ -54,7 +54,9 @@ const OptionItem = ({
       </div>
 
       {/* Option text */}
-      <p className="w-fit break-words pl-3 text-lg font-medium">{option}</p>
+      <p className="w-fit break-words pl-3 text-lg font-medium dark:text-white">
+        {option}
+      </p>
 
       {/* Correct answer sign */}
       {option === correctAnswer && (

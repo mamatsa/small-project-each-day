@@ -25,8 +25,8 @@ const Navbar = ({ quizSubject, onThemeChange }: NavbarProps) => {
   return (
     <div className="mb-4 flex h-[72px] justify-between">
       <div className="flex items-center gap-4">
-        <span className="block h-10 w-10">{quizSubject && <QuizIcon />}</span>
-        <p className="text-lg font-medium">{quizSubject}</p>
+        {quizSubject && <QuizIcon />}
+        <p className="text-lg font-medium dark:text-white">{quizSubject}</p>
       </div>
       <ThemeToggle onThemeChange={onThemeChange} />
     </div>
