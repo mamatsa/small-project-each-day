@@ -19,34 +19,35 @@ const OptionItem = ({
     <li
       className={`grid w-full grid-cols-[40px_1fr_28px] items-center rounded-xl bg-white p-3 -outline-offset-[3px] ${
         selectedOption === optionIndex + 1 &&
-        "outline-purple outline outline-[3px]"
+        "outline outline-[3px] outline-purple"
+      } ${
+        selectedOption === optionIndex + 1 &&
+        correctAnswer === option &&
+        "outline-success-green outline outline-[3px]"
       } ${
         correctAnswer &&
         selectedOption === optionIndex + 1 &&
-        "outline-green outline outline-[3px]"
-      } ${
-        correctAnswer &&
         correctAnswer !== option &&
-        selectedOption === optionIndex + 1 &&
-        "outline-red outline outline-[3px]"
+        "outline outline-[3px] outline-red"
       }`}
       onClick={() => {
+        if (correctAnswer) return;
         onOptionSelect(optionIndex);
       }}
     >
       {/* Question Number */}
       <div
-        className={`text-gray-navy bg-light-gray flex h-10 w-10 items-center justify-center rounded-md text-lg font-medium ${
+        className={`flex h-10 w-10 items-center justify-center rounded-md bg-light-gray text-lg font-medium text-gray-navy ${
           selectedOption === optionIndex + 1 && "bg-purple text-white"
         } ${
-          correctAnswer &&
           selectedOption === optionIndex + 1 &&
-          "bg-green text-white"
+          correctAnswer === option &&
+          "bg-success-green text-white"
         } ${
           correctAnswer &&
-          correctAnswer !== option &&
           selectedOption === optionIndex + 1 &&
-          "bg-red"
+          correctAnswer !== option &&
+          "bg-red text-white"
         }`}
       >
         {optionIndex + 1}
