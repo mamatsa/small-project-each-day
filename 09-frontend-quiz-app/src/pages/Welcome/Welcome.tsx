@@ -8,15 +8,15 @@ interface WelcomeProps {
 
 const Welcome = ({ onQuizChoose }: WelcomeProps) => {
   return (
-    <div className="space-y-10">
-      <div className="space-y-4">
-        <h1 className="text-4xl font-light dark:text-white sm:text-5xl">
+    <div className="grid-cols-2 space-y-10 lg:grid lg:space-y-0">
+      <div className="space-y-4 lg:space-y-8">
+        <h1 className="text-4xl font-light dark:text-white sm:text-5xl lg:text-6xl">
           Welcome to the
           <span className="block font-medium dark:text-white">
             Frontend Quiz!
           </span>
         </h1>
-        <p className="text-sm italic dark:text-light-blue sm:text-lg">
+        <p className="text-sm italic text-gray-navy dark:text-light-blue sm:text-lg lg:text-xl">
           Pick a subject to get started.
         </p>
       </div>

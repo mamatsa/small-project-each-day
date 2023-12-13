@@ -67,33 +67,35 @@ const Quiz = ({ subject, onQuizRestart }: QuizProps) => {
   return (
     <>
       {progress < 10 && (
-        <div>
+        <div className="grid-cols-2 lg:grid">
           {/* Quiz question and progress identifier */}
           <QuizHeader progress={progress} questions={questions} />
           {/* Answer options */}
-          <ul className="space-y-3 sm:space-y-4">
-            {questions[progress]?.options.map((option, index) => {
-              return (
-                <OptionItem
-                  optionIndex={index}
-                  option={option}
-                  correctAnswer={correctAnswer}
-                  onOptionSelect={optionSelectHandler}
-                  selectedOption={selectedOption}
-                  key={option}
-                />
-              );
-            })}
-          </ul>
+          <div>
+            <ul className="space-y-3 sm:space-y-4">
+              {questions[progress]?.options.map((option, index) => {
+                return (
+                  <OptionItem
+                    optionIndex={index}
+                    option={option}
+                    correctAnswer={correctAnswer}
+                    onOptionSelect={optionSelectHandler}
+                    selectedOption={selectedOption}
+                    key={option}
+                  />
+                );
+              })}
+            </ul>
 
-          {/* Answer submit and next question button */}
-          <SubmitButton
-            onQuestionSubmit={questionSubmitHandler}
-            correctAnswer={correctAnswer}
-          />
+            {/* Answer submit and next question button */}
+            <SubmitButton
+              onQuestionSubmit={questionSubmitHandler}
+              correctAnswer={correctAnswer}
+            />
 
-          {/* Error if no answer is selected on submit */}
-          {error && <ErrorMessage />}
+            {/* Error if no answer is selected on submit */}
+            {error && <ErrorMessage />}
+          </div>
         </div>
       )}
 

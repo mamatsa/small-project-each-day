@@ -23,7 +23,7 @@ const Navbar = ({ quizSubject, onThemeChange }: NavbarProps) => {
   const QuizIcon = quizIcons[quizSubject || "HTML"];
 
   return (
-    <div className="mb-4 flex h-[72px] justify-between">
+    <div className="mb-4 flex h-[72px] justify-between lg:h-32">
       <div className="flex items-center gap-4">
         {quizSubject && <QuizIcon />}
         <p className="text-lg font-medium dark:text-white sm:text-xl">

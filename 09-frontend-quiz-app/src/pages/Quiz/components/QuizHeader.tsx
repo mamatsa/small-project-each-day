@@ -7,11 +7,11 @@ interface QuizHeaderProps {
 
 const QuizHeader = ({ questions, progress }: QuizHeaderProps) => {
   return (
-    <div>
-      <p className="mb-3 text-sm italic dark:text-light-blue">
+    <div className="pr-20">
+      <p className="mb-3 text-sm italic dark:text-light-blue lg:text-base">
         Question {progress + 1} of 10
       </p>
-      <h2 className="mb-6 text-xl font-medium dark:text-white sm:text-2xl">
+      <h2 className="mb-6 text-xl font-medium dark:text-white sm:text-2xl lg:text-3xl">
         {questions[progress]?.question}
       </h2>
       <div className="mb-8 h-4 w-full rounded-full bg-white p-1 dark:bg-navy">
