@@ -5,6 +5,7 @@ export default {
   theme: {
     colors: {
       purple: "#A729F5",
+      "light-purple": "#F6E7FF",
       "dark-navy": "#313E51",
       navy: "#3B4D66",
       "gray-navy": "#626C7F",

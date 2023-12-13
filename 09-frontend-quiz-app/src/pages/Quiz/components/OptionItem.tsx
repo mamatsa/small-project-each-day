@@ -29,7 +29,7 @@ const OptionItem = ({
         selectedOption === optionIndex + 1 &&
         correctAnswer !== option &&
         "outline outline-[3px] outline-red"
-      }`}
+      } ${selectedOption !== optionIndex + 1 && "group"}`}
       onClick={() => {
         if (correctAnswer) return;
         onOptionSelect(optionIndex);
@@ -37,7 +37,7 @@ const OptionItem = ({
     >
       {/* Question Number */}
       <div
-        className={`flex h-10 w-10 items-center justify-center rounded-md bg-light-gray text-lg font-medium text-gray-navy ${
+        className={`sm:group-hover:bg-light-purple flex h-10 w-10 items-center justify-center rounded-md bg-light-gray text-lg font-medium text-gray-navy sm:group-hover:text-purple ${
           selectedOption === optionIndex + 1 && "bg-purple text-white"
         } ${
           selectedOption === optionIndex + 1 &&

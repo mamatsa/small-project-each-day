@@ -36,7 +36,7 @@ const QuizResult = ({ subject, onQuizRestart, score }: QuizResultProps) => {
           </p>
         </div>
         <button
-          className="my-3 w-full rounded-xl bg-purple py-4 text-lg font-medium text-white sm:my-5"
+          className="my-3 w-full rounded-xl bg-purple py-4 text-lg font-medium text-white sm:my-5 sm:hover:bg-opacity-70"
           onClick={() => {
             onQuizRestart();
           }}

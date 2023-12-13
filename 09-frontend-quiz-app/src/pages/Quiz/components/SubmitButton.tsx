@@ -9,7 +9,7 @@ const SubmitButton = ({
 }: SubmitButtonProps) => {
   return (
     <button
-      className="my-3 w-full rounded-xl bg-purple py-4 text-lg font-medium text-white sm:my-4"
+      className="my-3 w-full rounded-xl bg-purple py-4 text-lg font-medium text-white sm:my-4 sm:hover:bg-opacity-70"
       onClick={onQuestionSubmit}
     >
       {correctAnswer ? "Next Question" : "Submit Answer"}
