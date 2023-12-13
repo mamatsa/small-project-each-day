@@ -13,6 +13,23 @@ export default {
       "success-green": "#26D782",
       red: "#EE5454",
     },
+    extend: {
+      backgroundImage: {
+        "pattern-mobile":
+          "url('/src/images/pattern-background-mobile-light.svg')",
+        "pattern-tablet":
+          "url('/src/images/pattern-background-tablet-light.svg')",
+        "pattern-desktop":
+          "url('/src/images/pattern-background-desktop-light.svg')",
+
+        "pattern-mobile-dark":
+          "url('/src/images/pattern-background-mobile-dark.svg')",
+        "pattern-tablet-dark":
+          "url('/src/images/pattern-background-tablet-dark.svg')",
+        "pattern-desktop-dark":
+          "url('/src/images/pattern-background-desktop-dark.svg')",
+      },
+    },
   },
   plugins: [],
 };

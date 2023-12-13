@@ -10,7 +10,7 @@ const App = () => {
   };
 
   return (
-    <div className="h-screen bg-light-gray p-6">
+    <div className="bg-pattern-mobile sm:bg-pattern-tablet lg:bg-pattern-desktop h-screen bg-light-gray bg-no-repeat p-6">
       {!quizSubject && <Welcome onQuizChoose={quizChooseHnadler} />}
       {quizSubject && (
         <Quiz subject={quizSubject} onQuizRestart={quizChooseHnadler} />
