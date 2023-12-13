@@ -18,7 +18,7 @@ const QuizResult = ({ subject, onQuizRestart, score }: QuizResultProps) => {
   const QuizIcon = quizIcons[subject || "HTML"];
   return (
     <div>
-      <h1 className="my-8 text-[40px] font-light leading-tight">
+      <h1 className="mb-6 text-[40px] font-light leading-tight">
         Quiz completed
         <span className="block font-medium">You scored...</span>
       </h1>
