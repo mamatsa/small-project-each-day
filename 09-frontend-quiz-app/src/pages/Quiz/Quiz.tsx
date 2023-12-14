@@ -72,7 +72,7 @@ const Quiz = ({ subject, onQuizRestart }: QuizProps) => {
           <QuizHeader progress={progress} questions={questions} />
           {/* Answer options */}
           <div>
-            <ul className="space-y-3 sm:space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {questions[progress]?.options.map((option, index) => {
                 return (
                   <OptionItem
@@ -85,7 +85,7 @@ const Quiz = ({ subject, onQuizRestart }: QuizProps) => {
                   />
                 );
               })}
-            </ul>
+            </div>
 
             {/* Answer submit and next question button */}
             <SubmitButton

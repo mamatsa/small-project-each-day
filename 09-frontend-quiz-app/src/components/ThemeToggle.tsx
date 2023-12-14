@@ -31,6 +31,7 @@ const ThemeToggle = ({ onThemeChange, darkTheme }: ThemeToggleProps) => {
         }}
         className="relative inline-flex h-5 w-8 items-center rounded-full bg-purple sm:h-6 sm:w-10"
       >
+        <span className="sr-only">Change color theme</span>
         <span
           className={`${
             darkMode ? "translate-x-4 sm:translate-x-5" : "translate-x-1"

@@ -16,14 +16,14 @@ const OptionItem = ({
   onOptionSelect,
 }: OptionItemProps) => {
   return (
-    <li
-      className={`grid w-full cursor-pointer grid-cols-[40px_1fr_28px] items-center rounded-xl bg-white p-3 -outline-offset-[3px] dark:bg-navy ${
+    <button
+      className={`grid w-full grid-cols-[40px_1fr_28px] items-center rounded-xl bg-white p-3 -outline-offset-[3px] dark:bg-navy ${
         selectedOption === optionIndex + 1 &&
         "outline outline-[3px] outline-purple"
       } ${
         selectedOption === optionIndex + 1 &&
         correctAnswer === option &&
-        "outline-success-green outline outline-[3px]"
+        "outline outline-[3px] outline-success-green"
       } ${
         correctAnswer &&
         selectedOption === optionIndex + 1 &&
@@ -37,7 +37,7 @@ const OptionItem = ({
     >
       {/* Question Number */}
       <div
-        className={`sm:group-hover:bg-light-purple flex h-10 w-10 items-center justify-center rounded-md bg-light-gray text-lg font-medium text-gray-navy sm:group-hover:text-purple ${
+        className={`flex h-10 w-10 items-center  justify-center rounded-md bg-light-gray text-lg font-medium text-gray-navy sm:group-hover:bg-light-purple sm:group-hover:text-purple ${
           selectedOption === optionIndex + 1 && "bg-purple text-white"
         } ${
           selectedOption === optionIndex + 1 &&
@@ -54,7 +54,7 @@ const OptionItem = ({
       </div>
 
       {/* Option text */}
-      <p className="w-fit break-words pl-4 text-lg font-medium dark:text-white">
+      <p className="w-fit break-words pl-4 text-start text-lg font-medium dark:text-white">
         {option}
       </p>
 
@@ -73,7 +73,7 @@ const OptionItem = ({
             <IconIncorrect />
           </div>
         )}
-    </li>
+    </button>
   );
 };
 

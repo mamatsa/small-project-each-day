@@ -21,7 +21,7 @@ const Welcome = ({ onQuizChoose }: WelcomeProps) => {
         </p>
       </div>
 
-      <ul className="space-y-3">
+      <div className="space-y-3">
         <MenuItem title="HTML" onQuizChoose={onQuizChoose}>
           <HTMLLogo />
         </MenuItem>
@@ -37,7 +37,7 @@ const Welcome = ({ onQuizChoose }: WelcomeProps) => {
         <MenuItem title="Accessibility" onQuizChoose={onQuizChoose}>
           <Accessibility />
         </MenuItem>
-      </ul>
+      </div>
     </div>
   );
 };
