@@ -10,6 +10,7 @@ import {
 interface NavbarProps {
   quizSubject: Subject;
   onThemeChange: () => void;
+  darkTheme: boolean;
 }
 
 const quizIcons = {
@@ -19,7 +20,7 @@ const quizIcons = {
   Accessibility: Accessibility,
 };
 
-const Navbar = ({ quizSubject, onThemeChange }: NavbarProps) => {
+const Navbar = ({ quizSubject, onThemeChange, darkTheme }: NavbarProps) => {
   const QuizIcon = quizIcons[quizSubject || "HTML"];
 
   return (
@@ -30,7 +31,7 @@ const Navbar = ({ quizSubject, onThemeChange }: NavbarProps) => {
           {quizSubject}
         </p>
       </div>
-      <ThemeToggle onThemeChange={onThemeChange} />
+      <ThemeToggle onThemeChange={onThemeChange} darkTheme={darkTheme} />
     </div>
   );
 };

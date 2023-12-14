@@ -7,7 +7,7 @@ interface QuizHeaderProps {
 
 const QuizHeader = ({ questions, progress }: QuizHeaderProps) => {
   return (
-    <div className="pr-20">
+    <div className="lg:pr-20">
       <p className="mb-3 text-sm italic dark:text-light-blue lg:text-base">
         Question {progress + 1} of 10
       </p>
