@@ -30,7 +30,7 @@ const Quiz = ({ subject, onQuizRestart }: QuizProps) => {
   useEffect(() => {
     // Get questions from json file in public directory
     const getQuestions = async () => {
-      const response = await fetch("/public/data.json");
+      const response = await fetch("/data.json");
       const data = await response.json();
       const quiz = data.quizzes.filter(
         (quiz: { title: string }) => quiz.title === subject,
