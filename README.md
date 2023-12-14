@@ -10,3 +10,4 @@
 | 06  |             [URL Shortener](https://github.com/mamatsa/small-projects/tree/main/06-url-shortener)             |   [Live Demo](https://06-url-shortener.vercel.app/)    |
 | 07  |        [IP Address Tracker](https://github.com/mamatsa/small-projects/tree/main/07-ip-address-tracker)        | [Live Demo](https://07-ip-address-tracker.vercel.app/) |
 | 08  |           [Multi-step form](https://github.com/mamatsa/small-projects/tree/main/08-multi-step-form)           |  [Live Demo](https://08-multi-step-form.vercel.app/)   |
+| 09  |         [Frontend quiz app](https://github.com/mamatsa/small-projects/tree/main/09-frontend-quiz-app)         | [Live Demo](https://09-frontend-quiz-app.vercel.app/)  |
