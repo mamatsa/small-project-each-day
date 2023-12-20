@@ -1,5 +1,9 @@
 const IconCross = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 18 18"
+    className="h-4 w-4"
+  >
     <path
       fill="#494C6B"
       fillRule="evenodd"
