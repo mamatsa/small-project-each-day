@@ -3,6 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.tsx"],
   theme: {
     colors: {
+      white: "#ffffff",
       "bright-blue": "hsl(220, 98%, 61%)",
       "check-gradient": "hsl(192, 100%, 67%) to hsl(280, 87%, 65%)",
 
@@ -21,6 +22,13 @@ export default {
       "d-dark-grayish-blue": "hsl(234, 11%, 52%)",
       "d-very-dark-grayish-blue": "hsl(233, 14%, 35%)",
       "d-very-dark-grayish-blue2": "hsl(237, 14%, 26%)",
+    },
+
+    backgroundImage: {
+      "desktop-dark": "url('/src/images/bg-desktop-dark.jpg')",
+      "desktop-light": "url('/src/images/bg-desktop-light.jpg')",
+      "mobile-dark": "url('/src/images/bg-mobile-dark.jpg')",
+      "mobile-light": "url('/src/images/bg-mobile-light.jpg')",
     },
   },
   plugins: [],
