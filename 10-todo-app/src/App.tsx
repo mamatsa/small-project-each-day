@@ -1,6 +1,26 @@
+import { useState } from "react";
 import { IconMoon } from "components";
 
+interface Todo {
+  id: string;
+  value: string;
+}
+
 const App = () => {
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newTodo = {
+      id: crypto.randomUUID(),
+      value: e.currentTarget.addTodo.value,
+    };
+    setTodos([...todos, newTodo]);
+
+    e.currentTarget.addTodo.value = "";
+  };
+
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -13,18 +33,23 @@ const App = () => {
             <IconMoon />
           </button>
         </div>
-        <form className="relative mt-10">
+        <form className="relative mt-10" onSubmit={handleSubmit}>
           <div className="absolute left-4 top-3 h-5 w-5 rounded-full border border-solid border-l-light-grayish-blue"></div>
           <input
+            id="addTodo"
             type="text"
-            className="w-full rounded-md py-3 pl-12"
+            className="w-full rounded-md py-3 pl-12 outline-offset-0 outline-bright-blue"
             placeholder="Create a new todo..."
           />
         </form>
       </div>
 
       {/* Todos */}
-      <div></div>
+      <ul>
+        {todos.map((todo) => {
+          return <li key={todo.id}>{todo.value}</li>;
+        })}
+      </ul>
     </div>
   );
 };
