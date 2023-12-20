@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { IconCross, IconMoon } from "components";
+import { IconMoon, TodoItem } from "components";
 
-interface Todo {
+export interface Todo {
   id: string;
   value: string;
+  completed: boolean;
 }
 
 const App = () => {
@@ -15,11 +16,26 @@ const App = () => {
     const newTodo = {
       id: crypto.randomUUID(),
       value: e.currentTarget.addTodo.value,
+      completed: false,
     };
     setTodos([newTodo, ...todos]);
 
     e.currentTarget.addTodo.value = "";
   };
+
+  const handleTodoDelete = (id: string) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  const handleTodoComplete = (id: string) => {
+    const updatedTodos = todos.map((todo) => {
+      if (todo.id === id) todo.completed = !todo.completed;
+      return todo;
+    });
+    setTodos(updatedTodos);
+  };
+
+  console.log(todos);
 
   return (
     <div className="h-screen">
@@ -49,18 +65,12 @@ const App = () => {
         <ul className="-translate-y-6 rounded-md">
           {todos.map((todo) => {
             return (
-              <li
-                className="grid grid-cols-[48px_1fr_32px] border-b border-l-dark-grayish-blue bg-white py-4"
+              <TodoItem
                 key={todo.id}
-              >
-                <button className="h-5 w-5 justify-self-center rounded-full border border-solid border-l-light-grayish-blue"></button>
-                <p className="text-sm text-l-very-dark-grayish-blue">
-                  {todo.value}
-                </p>
-                <button>
-                  <IconCross />
-                </button>
-              </li>
+                todo={todo}
+                onTodoDelete={handleTodoDelete}
+                onTodoComplete={handleTodoComplete}
+              />
             );
           })}
         </ul>

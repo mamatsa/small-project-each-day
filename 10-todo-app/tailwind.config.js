@@ -5,7 +5,8 @@ export default {
     colors: {
       white: "#ffffff",
       "bright-blue": "hsl(220, 98%, 61%)",
-      "check-gradient": "hsl(192, 100%, 67%) to hsl(280, 87%, 65%)",
+      "check-gradient-from": "hsl(192, 100%, 67%)",
+      "check-gradient-to": "hsl(280, 87%, 65%)",
 
       // Light Theme
       "l-very-light-gray": "hsl(0, 0%, 98%)",
@@ -29,6 +30,8 @@ export default {
       "desktop-light": "url('/src/images/bg-desktop-light.jpg')",
       "mobile-dark": "url('/src/images/bg-mobile-dark.jpg')",
       "mobile-light": "url('/src/images/bg-mobile-light.jpg')",
+      "check-gradient":
+        "linear-gradient(to bottom right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234))",
     },
   },
   plugins: [],
