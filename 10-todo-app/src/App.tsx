@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IconMoon, TodoItem } from "components";
+import { IconMoon, TodoItem, FilterButton } from "components";
 
 export interface Todo {
   id: string;
@@ -9,6 +9,11 @@ export interface Todo {
 
 const App = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [filter, setFilter] = useState("All");
+  const [filteredTodos, setFilteredTodos] = useState<Todo[]>([]);
+
+  // Display filtered todos if filtere is applied
+  const displayTodos = filter === "All" ? todos : filteredTodos;
 
   // Counts how many todos are incompleted
   const remeaningTodos = todos.reduce((accumulator, currentValue) => {
@@ -27,7 +32,8 @@ const App = () => {
     };
     setTodos([newTodo, ...todos]);
 
-    e.currentTarget.addTodo.value = "";
+    e.currentTarget.addTodo.value = ""; // Clear input field
+    handleFilter(filter); // Update filtered todos
   };
 
   // Delete todo
@@ -42,11 +48,23 @@ const App = () => {
       return todo;
     });
     setTodos(updatedTodos);
+    handleFilter(filter); // Update filtered todos
   };
 
   // Delete all completed todos
   const handleCompletedTodoDelete = () => {
     setTodos(todos.filter((todo) => !todo.completed));
+    handleFilter(filter); // Update filtered todos
+  };
+
+  // Filter todos
+  const handleFilter = (option: string) => {
+    setFilter(option);
+    if (option === "Active") {
+      setFilteredTodos(todos.filter((todo) => !todo.completed));
+    } else if (option === "Completed") {
+      setFilteredTodos(todos.filter((todo) => todo.completed));
+    }
   };
 
   return (
@@ -61,6 +79,7 @@ const App = () => {
             <IconMoon />
           </button>
         </div>
+        {/* Todo add form */}
         <form className="relative mt-10" onSubmit={handleSubmit}>
           <div className="absolute bottom-0 left-3 top-0 my-auto h-5 w-5 rounded-full border border-solid border-l-light-grayish-blue"></div>
           <input
@@ -72,10 +91,10 @@ const App = () => {
         </form>
       </div>
 
-      {/* Todos */}
       <div className="h-[calc(100%-220px)] bg-l-very-light-gray px-6">
         <ul className="-translate-y-6 overflow-hidden rounded-md shadow-md">
-          {todos.map((todo) => {
+          {/* Todos */}
+          {displayTodos.map((todo) => {
             return (
               <TodoItem
                 key={todo.id}
@@ -86,11 +105,27 @@ const App = () => {
             );
           })}
 
+          {/* Incomplete todo count and delete all completed button */}
           <div className="flex justify-between bg-white p-4 text-sm text-l-dark-grayish-blue">
             <p>{remeaningTodos} items left</p>
             <button onClick={handleCompletedTodoDelete}>Clear Completed</button>
           </div>
         </ul>
+
+        {/* Filters */}
+        <div className="flex items-center justify-center gap-3 rounded-md bg-white p-4 font-bold text-l-dark-grayish-blue shadow-md">
+          <FilterButton title="All" filter={filter} onFilter={handleFilter} />
+          <FilterButton
+            title="Active"
+            filter={filter}
+            onFilter={handleFilter}
+          />
+          <FilterButton
+            title="Completed"
+            filter={filter}
+            onFilter={handleFilter}
+          />
+        </div>
       </div>
     </div>
   );
