@@ -10,6 +10,13 @@ export interface Todo {
 const App = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
+  // Counts how many todos are incompleted
+  const remeaningTodos = todos.reduce((accumulator, currentValue) => {
+    if (currentValue.completed) return accumulator;
+    else return accumulator + 1;
+  }, 0);
+
+  // Add todo
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -23,10 +30,12 @@ const App = () => {
     e.currentTarget.addTodo.value = "";
   };
 
+  // Delete todo
   const handleTodoDelete = (id: string) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  // Complete todo
   const handleTodoComplete = (id: string) => {
     const updatedTodos = todos.map((todo) => {
       if (todo.id === id) todo.completed = !todo.completed;
@@ -35,7 +44,10 @@ const App = () => {
     setTodos(updatedTodos);
   };
 
-  console.log(todos);
+  // Delete all completed todos
+  const handleCompletedTodoDelete = () => {
+    setTodos(todos.filter((todo) => !todo.completed));
+  };
 
   return (
     <div className="h-screen">
@@ -62,7 +74,7 @@ const App = () => {
 
       {/* Todos */}
       <div className="h-[calc(100%-220px)] bg-l-very-light-gray px-6">
-        <ul className="-translate-y-6 rounded-md">
+        <ul className="-translate-y-6 overflow-hidden rounded-md shadow-md">
           {todos.map((todo) => {
             return (
               <TodoItem
@@ -73,6 +85,11 @@ const App = () => {
               />
             );
           })}
+
+          <div className="flex justify-between bg-white p-4 text-sm text-l-dark-grayish-blue">
+            <p>{remeaningTodos} items left</p>
+            <button onClick={handleCompletedTodoDelete}>Clear Completed</button>
+          </div>
         </ul>
       </div>
     </div>
