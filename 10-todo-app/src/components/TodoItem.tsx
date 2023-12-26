@@ -13,19 +13,23 @@ const TodoItem = ({ todo, onTodoDelete, onTodoComplete }: TodoItemProps) => {
       onClick={() => {
         onTodoComplete(todo.id);
       }}
-      className="grid grid-cols-[48px_1fr_32px] border-b border-l-dark-grayish-blue bg-white py-4"
+      className="group grid cursor-pointer grid-cols-[44px_1fr_32px] items-center border-b border-l-light-grayish-blue bg-white py-4 sm:gap-2 sm:px-1"
     >
       <button
-        className={`flex h-5 w-5 items-center justify-center justify-self-center rounded-full border border-solid border-l-light-grayish-blue ${
+        className={`flex h-5 w-5 cursor-pointer items-center justify-center justify-self-center rounded-full border border-solid border-l-light-grayish-blue sm:group-hover:border-bright-blue ${
           todo.completed && "bg-check-gradient"
         }`}
       >
-        <div className={`scale-90 sm:scale-100 ${!todo.completed && "hidden"}`}>
+        <div
+          className={`scale-90 rounded-full sm:scale-100 ${
+            !todo.completed && "hidden"
+          }`}
+        >
           <IconCheck />
         </div>
       </button>
       <p
-        className={`text-sm  ${
+        className={`text-sm sm:text-lg  ${
           todo.completed
             ? "text-l-dark-grayish-blue line-through"
             : "text-l-very-dark-grayish-blue"
@@ -38,6 +42,7 @@ const TodoItem = ({ todo, onTodoDelete, onTodoComplete }: TodoItemProps) => {
           e.stopPropagation();
           onTodoDelete(todo.id);
         }}
+        className="sm:hidden sm:hover:scale-110 sm:group-hover:block"
       >
         <IconCross />
       </button>

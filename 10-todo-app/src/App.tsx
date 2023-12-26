@@ -74,8 +74,8 @@ const App = () => {
   return (
     <div className="h-screen">
       {/* Header */}
-      <div className="h-[220px] bg-mobile-light bg-cover px-6 py-12">
-        <div className="flex items-center justify-between">
+      <div className="h-[220px] bg-mobile-light bg-cover px-6 py-12 sm:bg-desktop-light">
+        <div className="mx-auto flex max-w-screen-sm items-center justify-between">
           <h1 className="text-3xl font-bold leading-none tracking-[0.5rem] text-white">
             TODO
           </h1>
@@ -84,19 +84,22 @@ const App = () => {
           </button>
         </div>
         {/* Todo add form */}
-        <form className="relative mt-10" onSubmit={handleSubmit}>
-          <div className="absolute bottom-0 left-3 top-0 my-auto h-5 w-5 rounded-full border border-solid border-l-light-grayish-blue"></div>
+        <form
+          className="relative mx-auto mt-10 max-w-screen-sm"
+          onSubmit={handleSubmit}
+        >
+          <div className="absolute bottom-0 left-3 top-0 my-auto h-5 w-5 rounded-full border border-solid border-l-light-grayish-blue sm:left-4"></div>
           <input
             id="addTodo"
             type="text"
-            className="w-full rounded-md py-3 pl-12 outline-bright-blue"
+            className="w-full rounded-md py-3 pl-11 text-sm outline-bright-blue sm:pl-14 sm:text-lg"
             placeholder="Create a new todo..."
           />
         </form>
       </div>
 
       <div className="h-[calc(100%-220px)] bg-l-very-light-gray px-6">
-        <ul className="-translate-y-6 overflow-hidden rounded-md shadow-md">
+        <ul className="mx-auto max-w-screen-sm -translate-y-6 overflow-hidden  rounded-md shadow-md">
           {/* Todos */}
           {displayTodos.map((todo) => {
             return (
@@ -112,12 +115,29 @@ const App = () => {
           {/* Incomplete todo count and delete all completed button */}
           <div className="flex justify-between bg-white p-4 text-sm text-l-dark-grayish-blue">
             <p>{remeaningTodos} items left</p>
+            <div className="hidden items-center justify-center gap-3 font-bold sm:flex">
+              <FilterButton
+                title="All"
+                filter={filter}
+                onFilter={handleFilter}
+              />
+              <FilterButton
+                title="Active"
+                filter={filter}
+                onFilter={handleFilter}
+              />
+              <FilterButton
+                title="Completed"
+                filter={filter}
+                onFilter={handleFilter}
+              />
+            </div>
             <button onClick={handleCompletedTodoDelete}>Clear Completed</button>
           </div>
         </ul>
 
         {/* Filters */}
-        <div className="flex items-center justify-center gap-3 rounded-md bg-white p-4 font-bold text-l-dark-grayish-blue shadow-md">
+        <div className="mx-auto flex max-w-screen-sm items-center justify-center gap-3 rounded-md bg-white p-4 font-bold text-l-dark-grayish-blue shadow-md sm:hidden">
           <FilterButton title="All" filter={filter} onFilter={handleFilter} />
           <FilterButton
             title="Active"
