@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { IconMoon, TodoItem, FilterButton } from "components";
 
 export interface Todo {
@@ -33,7 +33,6 @@ const App = () => {
     setTodos([newTodo, ...todos]);
 
     e.currentTarget.addTodo.value = ""; // Clear input field
-    handleFilter(filter); // Update filtered todos
   };
 
   // Delete todo
@@ -48,24 +47,29 @@ const App = () => {
       return todo;
     });
     setTodos(updatedTodos);
-    handleFilter(filter); // Update filtered todos
   };
 
   // Delete all completed todos
   const handleCompletedTodoDelete = () => {
     setTodos(todos.filter((todo) => !todo.completed));
-    handleFilter(filter); // Update filtered todos
   };
 
   // Filter todos
-  const handleFilter = (option: string) => {
-    setFilter(option);
-    if (option === "Active") {
-      setFilteredTodos(todos.filter((todo) => !todo.completed));
-    } else if (option === "Completed") {
-      setFilteredTodos(todos.filter((todo) => todo.completed));
-    }
-  };
+  const handleFilter = useCallback(
+    (option: string) => {
+      setFilter(option);
+      if (option === "Active") {
+        setFilteredTodos(todos.filter((todo) => !todo.completed));
+      } else if (option === "Completed") {
+        setFilteredTodos(todos.filter((todo) => todo.completed));
+      }
+    },
+    [todos],
+  );
+
+  useEffect(() => {
+    handleFilter(filter);
+  }, [filter, handleFilter, todos]);
 
   return (
     <div className="h-screen">
