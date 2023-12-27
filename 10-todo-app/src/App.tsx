@@ -1,5 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-import { IconMoon, TodoItem, FilterButton, IconSun } from "components";
+import {
+  IconMoon,
+  TodoItem,
+  IconSun,
+  FilterSection,
+  AddTodoForm,
+} from "components";
 
 export interface Todo {
   id: string;
@@ -45,7 +51,7 @@ const App = () => {
   }, 0);
 
   // Add todo
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleTodoFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newTodo = {
@@ -116,19 +122,8 @@ const App = () => {
             {darkMode ? <IconSun /> : <IconMoon />}
           </button>
         </div>
-        {/* Todo add form */}
-        <form
-          className="relative mx-auto mt-10 max-w-screen-sm"
-          onSubmit={handleSubmit}
-        >
-          <div className="absolute bottom-0 left-3 top-0 my-auto h-5 w-5 rounded-full border border-solid border-l-light-grayish-blue sm:left-4 dark:border-d-very-dark-grayish-blue"></div>
-          <input
-            id="addTodo"
-            type="text"
-            className="w-full rounded-md py-3 pl-11 text-sm outline-bright-blue sm:pl-14 sm:text-lg dark:bg-d-very-dark-desaturated-blue dark:text-d-light-grayish-blue"
-            placeholder="Create a new todo..."
-          />
-        </form>
+
+        <AddTodoForm onSubmit={handleTodoFormSubmit} />
       </div>
 
       <div className="h-[calc(100%-220px)] bg-l-very-light-gray px-6 dark:bg-d-very-dark-blue">
@@ -145,26 +140,14 @@ const App = () => {
             );
           })}
 
-          {/* Incomplete todo count and delete all completed button */}
+          {/* Count incomplete todo and delete all completed button */}
           <div className="flex justify-between bg-white p-4 text-sm text-l-dark-grayish-blue dark:bg-d-very-dark-desaturated-blue dark:text-d-dark-grayish-blue">
             <p>{remeaningTodos} items left</p>
-            <div className="hidden items-center justify-center gap-3 font-bold sm:flex">
-              <FilterButton
-                title="All"
-                filter={filter}
-                onFilter={handleFilter}
-              />
-              <FilterButton
-                title="Active"
-                filter={filter}
-                onFilter={handleFilter}
-              />
-              <FilterButton
-                title="Completed"
-                filter={filter}
-                onFilter={handleFilter}
-              />
-            </div>
+            <FilterSection
+              filter={filter}
+              onFilter={handleFilter}
+              isDisplayMobile={false}
+            />
             <button
               onClick={handleCompletedTodoDelete}
               className="hover:text-l-very-dark-grayish-blue dark:hover:text-d-light-grayish-blue-hover"
@@ -174,20 +157,12 @@ const App = () => {
           </div>
         </ul>
 
-        {/* Filters */}
-        <div className="mx-auto flex max-w-screen-sm items-center justify-center gap-3 rounded-md bg-white p-4 font-bold text-l-dark-grayish-blue shadow-md sm:hidden dark:bg-d-very-dark-desaturated-blue">
-          <FilterButton title="All" filter={filter} onFilter={handleFilter} />
-          <FilterButton
-            title="Active"
-            filter={filter}
-            onFilter={handleFilter}
-          />
-          <FilterButton
-            title="Completed"
-            filter={filter}
-            onFilter={handleFilter}
-          />
-        </div>
+        {/* Filters on mobile viewport */}
+        <FilterSection
+          filter={filter}
+          onFilter={handleFilter}
+          isDisplayMobile={true}
+        />
       </div>
     </div>
   );
