@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { IconMoon, TodoItem, FilterButton } from "components";
+import { IconMoon, TodoItem, FilterButton, IconSun } from "components";
 
 export interface Todo {
   id: string;
@@ -11,6 +11,7 @@ const App = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [filter, setFilter] = useState("All");
   const [filteredTodos, setFilteredTodos] = useState<Todo[]>([]);
+  const [darkMode, setDarkMode] = useState(false);
 
   // Display filtered todos if filtere is applied
   const displayTodos = filter === "All" ? todos : filteredTodos;
@@ -72,15 +73,19 @@ const App = () => {
   }, [filter, handleFilter, todos]);
 
   return (
-    <div className="h-screen">
+    <div
+      className={`h-full min-h-screen pb-4 ${
+        darkMode && "dark bg-d-very-dark-blue"
+      }`}
+    >
       {/* Header */}
-      <div className="h-[220px] bg-mobile-light bg-cover px-6 py-12 sm:bg-desktop-light">
+      <div className="h-[220px] bg-mobile-light bg-cover px-6 py-12 sm:bg-desktop-light dark:bg-mobile-dark dark:sm:bg-desktop-dark">
         <div className="mx-auto flex max-w-screen-sm items-center justify-between">
           <h1 className="text-3xl font-bold leading-none tracking-[0.5rem] text-white">
             TODO
           </h1>
-          <button>
-            <IconMoon />
+          <button onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? <IconSun /> : <IconMoon />}
           </button>
         </div>
         {/* Todo add form */}
@@ -88,17 +93,17 @@ const App = () => {
           className="relative mx-auto mt-10 max-w-screen-sm"
           onSubmit={handleSubmit}
         >
-          <div className="absolute bottom-0 left-3 top-0 my-auto h-5 w-5 rounded-full border border-solid border-l-light-grayish-blue sm:left-4"></div>
+          <div className="absolute bottom-0 left-3 top-0 my-auto h-5 w-5 rounded-full border border-solid border-l-light-grayish-blue sm:left-4 dark:border-d-very-dark-grayish-blue"></div>
           <input
             id="addTodo"
             type="text"
-            className="w-full rounded-md py-3 pl-11 text-sm outline-bright-blue sm:pl-14 sm:text-lg"
+            className="w-full rounded-md py-3 pl-11 text-sm outline-bright-blue sm:pl-14 sm:text-lg dark:bg-d-very-dark-desaturated-blue dark:text-d-light-grayish-blue"
             placeholder="Create a new todo..."
           />
         </form>
       </div>
 
-      <div className="h-[calc(100%-220px)] bg-l-very-light-gray px-6">
+      <div className="h-[calc(100%-220px)] bg-l-very-light-gray px-6 dark:bg-d-very-dark-blue">
         <ul className="mx-auto max-w-screen-sm -translate-y-6 overflow-hidden  rounded-md shadow-md">
           {/* Todos */}
           {displayTodos.map((todo) => {
@@ -113,7 +118,7 @@ const App = () => {
           })}
 
           {/* Incomplete todo count and delete all completed button */}
-          <div className="flex justify-between bg-white p-4 text-sm text-l-dark-grayish-blue">
+          <div className="flex justify-between bg-white p-4 text-sm text-l-dark-grayish-blue dark:bg-d-very-dark-desaturated-blue dark:text-d-dark-grayish-blue">
             <p>{remeaningTodos} items left</p>
             <div className="hidden items-center justify-center gap-3 font-bold sm:flex">
               <FilterButton
@@ -132,12 +137,17 @@ const App = () => {
                 onFilter={handleFilter}
               />
             </div>
-            <button onClick={handleCompletedTodoDelete}>Clear Completed</button>
+            <button
+              onClick={handleCompletedTodoDelete}
+              className="hover:text-l-very-dark-grayish-blue dark:hover:text-d-light-grayish-blue-hover"
+            >
+              Clear Completed
+            </button>
           </div>
         </ul>
 
         {/* Filters */}
-        <div className="mx-auto flex max-w-screen-sm items-center justify-center gap-3 rounded-md bg-white p-4 font-bold text-l-dark-grayish-blue shadow-md sm:hidden">
+        <div className="mx-auto flex max-w-screen-sm items-center justify-center gap-3 rounded-md bg-white p-4 font-bold text-l-dark-grayish-blue shadow-md sm:hidden dark:bg-d-very-dark-desaturated-blue">
           <FilterButton title="All" filter={filter} onFilter={handleFilter} />
           <FilterButton
             title="Active"

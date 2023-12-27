@@ -7,7 +7,11 @@ interface FilterButtonProps {
 const FilterButton = ({ filter, title, onFilter }: FilterButtonProps) => {
   return (
     <button
-      className={`${filter === title && "text-bright-blue"}`}
+      className={`${
+        filter === title
+          ? "text-bright-blue"
+          : "hover:text-l-very-dark-grayish-blue dark:hover:text-d-light-grayish-blue-hover"
+      }`}
       onClick={() => {
         onFilter(title);
       }}
