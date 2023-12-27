@@ -1,8 +1,11 @@
-import { Todo } from "App";
 import { IconCheck, IconCross } from "./svgs";
 
 interface TodoItemProps {
-  todo: Todo;
+  todo: {
+    id: string;
+    value: string;
+    completed: boolean;
+  };
   onTodoDelete: (id: string) => void;
   onTodoComplete: (id: string) => void;
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import {
   IconMoon,
   TodoItem,
@@ -6,29 +6,20 @@ import {
   FilterSection,
   AddTodoForm,
 } from "components";
-
-export interface Todo {
-  id: string;
-  value: string;
-  completed: boolean;
-}
+import { useTodo } from "hooks";
 
 const App = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [filter, setFilter] = useState("All");
-  const [filteredTodos, setFilteredTodos] = useState<Todo[]>([]);
   const [darkMode, setDarkMode] = useState(false);
-
-  // Get saved todos and color theme from localstorage
-  useEffect(() => {
-    const savedTodos = JSON.parse(localStorage.getItem("todos") || "");
-    if (savedTodos?.length) setTodos(savedTodos);
-  }, []);
-
-  // Set updated todos to localstorage
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
+  const {
+    todoList,
+    filterOption,
+    remainingTodoCount,
+    addTodo,
+    toggleTodoCompletion,
+    deleteTodo,
+    deleteCompletedTodos,
+    filterTodos,
+  } = useTodo();
 
   // Set dark theme if it's saved in localstorage or it is system preference
   useEffect(() => {
@@ -41,64 +32,13 @@ const App = () => {
     }
   }, []);
 
-  // Display filtered todos if filtere is applied
-  const displayTodos = filter === "All" ? todos : filteredTodos;
-
-  // Counts how many todos are incompleted
-  const remeaningTodos = todos.reduce((accumulator, currentValue) => {
-    if (currentValue.completed) return accumulator;
-    else return accumulator + 1;
-  }, 0);
-
-  // Add todo
   const handleTodoFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const newTodo = {
-      id: crypto.randomUUID(),
-      value: e.currentTarget.addTodo.value,
-      completed: false,
-    };
-    setTodos([newTodo, ...todos]);
+    addTodo(e.currentTarget.addTodo.value);
 
     e.currentTarget.addTodo.value = ""; // Clear input field
   };
-
-  // Delete todo
-  const handleTodoDelete = (id: string) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-
-  // Complete todo
-  const handleTodoComplete = (id: string) => {
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === id) todo.completed = !todo.completed;
-      return todo;
-    });
-    setTodos(updatedTodos);
-  };
-
-  // Delete all completed todos
-  const handleCompletedTodoDelete = () => {
-    setTodos(todos.filter((todo) => !todo.completed));
-  };
-
-  // Filter todos
-  const handleFilter = useCallback(
-    (option: string) => {
-      setFilter(option);
-      if (option === "Active") {
-        setFilteredTodos(todos.filter((todo) => !todo.completed));
-      } else if (option === "Completed") {
-        setFilteredTodos(todos.filter((todo) => todo.completed));
-      }
-    },
-    [todos],
-  );
-
-  useEffect(() => {
-    handleFilter(filter);
-  }, [filter, handleFilter, todos]);
 
   return (
     <div
@@ -129,27 +69,27 @@ const App = () => {
       <div className="h-[calc(100%-220px)] bg-l-very-light-gray px-6 dark:bg-d-very-dark-blue">
         <ul className="mx-auto max-w-screen-sm -translate-y-6 overflow-hidden  rounded-md shadow-md">
           {/* Todos */}
-          {displayTodos.map((todo) => {
+          {todoList.map((todo) => {
             return (
               <TodoItem
                 key={todo.id}
                 todo={todo}
-                onTodoDelete={handleTodoDelete}
-                onTodoComplete={handleTodoComplete}
+                onTodoDelete={deleteTodo}
+                onTodoComplete={toggleTodoCompletion}
               />
             );
           })}
 
           {/* Count incomplete todo and delete all completed button */}
           <div className="flex justify-between bg-white p-4 text-sm text-l-dark-grayish-blue dark:bg-d-very-dark-desaturated-blue dark:text-d-dark-grayish-blue">
-            <p>{remeaningTodos} items left</p>
+            <p>{remainingTodoCount} items left</p>
             <FilterSection
-              filter={filter}
-              onFilter={handleFilter}
+              filter={filterOption}
+              onFilter={filterTodos}
               isDisplayMobile={false}
             />
             <button
-              onClick={handleCompletedTodoDelete}
+              onClick={deleteCompletedTodos}
               className="hover:text-l-very-dark-grayish-blue dark:hover:text-d-light-grayish-blue-hover"
             >
               Clear Completed
@@ -159,8 +99,8 @@ const App = () => {
 
         {/* Filters on mobile viewport */}
         <FilterSection
-          filter={filter}
-          onFilter={handleFilter}
+          filter={filterOption}
+          onFilter={filterTodos}
           isDisplayMobile={true}
         />
       </div>
