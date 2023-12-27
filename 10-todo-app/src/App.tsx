@@ -13,6 +13,28 @@ const App = () => {
   const [filteredTodos, setFilteredTodos] = useState<Todo[]>([]);
   const [darkMode, setDarkMode] = useState(false);
 
+  // Get saved todos and color theme from localstorage
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem("todos") || "");
+    if (savedTodos?.length) setTodos(savedTodos);
+  }, []);
+
+  // Set updated todos to localstorage
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  // Set dark theme if it's saved in localstorage or it is system preference
+  useEffect(() => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      setDarkMode(true);
+    }
+  }, []);
+
   // Display filtered todos if filtere is applied
   const displayTodos = filter === "All" ? todos : filteredTodos;
 
@@ -74,7 +96,7 @@ const App = () => {
 
   return (
     <div
-      className={`h-full min-h-screen pb-4 ${
+      className={`h-full min-h-screen bg-l-very-light-gray pb-4 ${
         darkMode && "dark bg-d-very-dark-blue"
       }`}
     >
@@ -84,7 +106,13 @@ const App = () => {
           <h1 className="text-3xl font-bold leading-none tracking-[0.5rem] text-white">
             TODO
           </h1>
-          <button onClick={() => setDarkMode(!darkMode)}>
+          <button
+            onClick={() => {
+              if (darkMode) localStorage.theme = "light";
+              else localStorage.theme = "dark";
+              setDarkMode(!darkMode);
+            }}
+          >
             {darkMode ? <IconSun /> : <IconMoon />}
           </button>
         </div>
