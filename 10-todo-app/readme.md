@@ -11,7 +11,7 @@ This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https
 
 ## The challenge
 
-According to original challenge users should be able to:
+According to the original challenge users should be able to:
 
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
@@ -45,3 +45,4 @@ After my additions users can also:
 ## Links
 
 - [Challenge URL](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW)
+- [Live Site URL](https://10-todo-app.vercel.app/)
