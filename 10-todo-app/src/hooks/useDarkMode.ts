@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 
 const useDarkMode = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   // Set dark theme if it's saved in localstorage or it is system preference
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (
       localStorage.theme === "dark" ||
       (!("theme" in localStorage) &&
@@ -14,13 +14,13 @@ const useDarkMode = () => {
     }
   }, []);
 
-  const handleDarkThemeToggle = (darkModeIsOn: boolean) => {
-    if (darkModeIsOn) localStorage.theme = "light";
-    else localStorage.theme = "dark";
+  const handleToggleDarkMode = (darkModeIsOn: boolean) => {
+    if (darkModeIsOn) localStorage.theme = "dark";
+    else localStorage.theme = "light";
     setDarkMode(darkModeIsOn);
   };
 
-  return { darkMode, toggleDarkMode: handleDarkThemeToggle };
+  return { darkMode, toggleDarkMode: handleToggleDarkMode };
 };
 
 export default useDarkMode;

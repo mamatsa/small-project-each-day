@@ -30,8 +30,8 @@ const App = () => {
 
   return (
     <div
-      className={`h-full min-h-screen bg-l-very-light-gray pb-4 ${
-        darkMode && "dark bg-d-very-dark-blue"
+      className={`h-full min-h-screen pb-4 ${
+        darkMode ? "dark bg-d-very-dark-blue" : "bg-l-very-light-gray"
       }`}
     >
       {/* Header */}
