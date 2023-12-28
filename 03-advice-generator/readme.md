@@ -29,6 +29,6 @@ Users should be able to:
 
 ## Links
 
-- [Challange URL](https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db)
+- [Challenge URL](https://www.frontendmentor.io/challenges/advice-generator-app-QdUG-13db)
 - [Used API DOCS](https://api.adviceslip.com/)
 - [Live Site URL](https://small-projects-g8cl1xvts-otars-projects.vercel.app/)

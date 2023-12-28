@@ -33,6 +33,6 @@ Users should be able to:
 
 ## Links
 
-- [Challange URL](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G)
+- [Challenge URL](https://www.frontendmentor.io/challenges/url-shortening-api-landing-page-2ce3ob-G)
 - [Used API](https://rapidapi.com/farolan/api/url-shortener23/)
 - [Live Site URL](https://06-url-shortener.vercel.app/)

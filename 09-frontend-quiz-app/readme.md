@@ -42,5 +42,5 @@ Your users should be able to:
 
 ## Links
 
-- [Challange URL](https://www.frontendmentor.io/challenges/frontend-quiz-app-BE7xkzXQnU)
+- [Challenge URL](https://www.frontendmentor.io/challenges/frontend-quiz-app-BE7xkzXQnU)
 - [Live Site URL](https://09-frontend-quiz-app.vercel.app/)

@@ -11,4 +11,4 @@
 | 07  |        [IP Address Tracker](https://github.com/mamatsa/small-projects/tree/main/07-ip-address-tracker)        | [Live Demo](https://07-ip-address-tracker.vercel.app/) |
 | 08  |           [Multi-step form](https://github.com/mamatsa/small-projects/tree/main/08-multi-step-form)           |  [Live Demo](https://08-multi-step-form.vercel.app/)   |
 | 09  |         [Frontend quiz app](https://github.com/mamatsa/small-projects/tree/main/09-frontend-quiz-app)         | [Live Demo](https://09-frontend-quiz-app.vercel.app/)  |
-| 10  |              [Todo app](https://github.com/mamatsa/small-projects/tree/10-todo-app/10-todo-app)               |      [Live Demo](https://10-todo-app.vercel.app/)      |
+| 10  |                  [Todo app](https://github.com/mamatsa/small-projects/tree/main/10-todo-app)                  |      [Live Demo](https://10-todo-app.vercel.app/)      |
