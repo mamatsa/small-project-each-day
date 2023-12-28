@@ -82,6 +82,10 @@ function useTodo() {
     }
   }, [filterOption, handleFilterTodos, todoList]);
 
+  const handleReorderTodoList = (reorderedTodoList: Todo[]) => {
+    setTodoList(reorderedTodoList);
+  };
+
   return {
     todoList: filterOption === "All" ? todoList : filteredTodoList,
     filterOption,
@@ -91,6 +95,7 @@ function useTodo() {
     deleteTodo: handleDeleteTodo,
     deleteCompletedTodos: handleDeleteCompletedTodos,
     filterTodos: handleFilterTodos,
+    reorderTodoList: handleReorderTodoList,
   };
 }
 

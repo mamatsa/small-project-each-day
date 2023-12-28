@@ -12,7 +12,7 @@ const AddTodoForm = ({ onSubmit }: AddTodoFormProps) => {
       <input
         id="addTodo"
         type="text"
-        className="w-full rounded-md py-3 pl-11 text-sm outline-bright-blue sm:pl-14 sm:text-lg dark:bg-d-very-dark-desaturated-blue dark:text-d-light-grayish-blue"
+        className="w-full rounded-md py-3 pl-11 text-sm outline-bright-blue sm:py-3.5 sm:pl-14 sm:text-lg dark:bg-d-very-dark-desaturated-blue dark:text-d-light-grayish-blue"
         placeholder="Create a new todo..."
       />
     </form>

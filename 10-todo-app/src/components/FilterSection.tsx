@@ -13,7 +13,7 @@ const FilterSection = ({
 }: FilterSectionProps) => {
   return (
     <div
-      className={`items-center justify-center gap-3 font-bold ${
+      className={`items-center justify-center gap-4 font-bold ${
         isDisplayMobile
           ? "mx-auto flex max-w-screen-sm rounded-md bg-white p-4 text-l-dark-grayish-blue shadow-md sm:hidden dark:bg-d-very-dark-desaturated-blue"
           : "hidden sm:flex"
