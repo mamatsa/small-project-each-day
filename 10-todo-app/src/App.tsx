@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import {
   IconMoon,
   TodoItem,
@@ -6,10 +5,10 @@ import {
   FilterSection,
   AddTodoForm,
 } from "components";
-import { useTodo } from "hooks";
+import { useDarkMode, useTodo } from "hooks";
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, toggleDarkMode } = useDarkMode();
   const {
     todoList,
     filterOption,
@@ -20,17 +19,6 @@ const App = () => {
     deleteCompletedTodos,
     filterTodos,
   } = useTodo();
-
-  // Set dark theme if it's saved in localstorage or it is system preference
-  useEffect(() => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      setDarkMode(true);
-    }
-  }, []);
 
   const handleTodoFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -52,13 +40,7 @@ const App = () => {
           <h1 className="text-3xl font-bold leading-none tracking-[0.5rem] text-white">
             TODO
           </h1>
-          <button
-            onClick={() => {
-              if (darkMode) localStorage.theme = "light";
-              else localStorage.theme = "dark";
-              setDarkMode(!darkMode);
-            }}
-          >
+          <button onClick={() => toggleDarkMode(!darkMode)}>
             {darkMode ? <IconSun /> : <IconMoon />}
           </button>
         </div>
