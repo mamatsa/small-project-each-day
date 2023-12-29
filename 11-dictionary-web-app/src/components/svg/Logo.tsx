@@ -1,9 +1,10 @@
-const logo = () => (
+const Logo = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="34"
     height="38"
     viewBox="0 0 34 38"
+    className="scale-90 sm:scale-100"
   >
     <g
       fill="none"
@@ -19,4 +20,4 @@ const logo = () => (
   </svg>
 );
 
-export default logo;
+export default Logo;
