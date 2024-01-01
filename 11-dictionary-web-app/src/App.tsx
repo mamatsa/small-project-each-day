@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import { Header, Search, DisplayDetails } from "components";
 
 interface Phonetic {
@@ -29,6 +29,18 @@ const App = () => {
     "sans",
   );
 
+  useLayoutEffect(() => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      setDarkMode(true);
+    }
+
+    setFontFamily(localStorage.fontFamily || "sans");
+  }, []);
+
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const searchWord = e.currentTarget.searchInput.value;
@@ -46,9 +58,12 @@ const App = () => {
 
   const handleFontChange = (font: "sans" | "serif" | "mono") => {
     setFontFamily(font);
+    localStorage.setItem("fontFamily", font);
   };
 
   const handleDarkModeToggle = () => {
+    if (darkMode) localStorage.setItem("theme", "light");
+    else localStorage.setItem("theme", "dark");
     setDarkMode(!darkMode);
   };
 
