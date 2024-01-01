@@ -11,7 +11,7 @@ const FontDropdown = ({ onFontChange, fontFamily }: FontDropdownProps) => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center gap-x-3 text-sm font-bold">
+        <Menu.Button className="inline-flex w-full items-center justify-center gap-x-3 text-sm font-bold md:text-lg">
           {fontFamily === "sans"
             ? "Sans Serif"
             : fontFamily === "serif"
@@ -34,7 +34,7 @@ const FontDropdown = ({ onFontChange, fontFamily }: FontDropdownProps) => {
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-2xl bg-white shadow-md outline-none dark:bg-gray-600 dark:shadow-purple">
-          <div className="flex flex-col py-1 text-sm font-bold text-gray-700 dark:text-white">
+          <div className="flex flex-col py-1 text-sm font-bold text-gray-700 md:text-lg dark:text-white">
             <Menu.Item>
               <button
                 className="px-4 py-2 text-left font-sans sm:hover:text-purple"

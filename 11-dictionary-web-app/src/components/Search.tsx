@@ -21,7 +21,7 @@ const Search = ({ onSearch }: SearchProps) => {
   };
 
   return (
-    <form action="" className="relative my-7" onSubmit={handleSubmit}>
+    <form action="" className="relative my-7 md:my-12" onSubmit={handleSubmit}>
       <div className="relative">
         <input
           onChange={() => setError(false)}
@@ -29,7 +29,7 @@ const Search = ({ onSearch }: SearchProps) => {
           aria-invalid={error ? "true" : "false"}
           type="text"
           placeholder="Search..."
-          className={`w-full rounded-2xl bg-gray-100 px-6 py-[14px] font-bold outline-none placeholder:text-gray-300 dark:bg-gray-600 ${
+          className={`w-full rounded-2xl bg-gray-100 px-6 py-[14px] font-bold outline-none placeholder:text-gray-300 md:py-5 md:text-xl dark:bg-gray-600 ${
             error ? "ring-1 ring-red" : "ring-purple focus:ring-1"
           }`}
         />

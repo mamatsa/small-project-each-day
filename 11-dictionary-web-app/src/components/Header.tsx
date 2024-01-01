@@ -22,9 +22,9 @@ const Header = ({
         {/* Font family select */}
         <FontDropdown onFontChange={onFontChange} fontFamily={fontFamily} />
 
-        <div className="mx-4 h-8 w-px bg-gray-100"></div>
+        <div className="mx-4 h-8 w-px bg-gray-100 md:mx-5"></div>
         {/* Dark mode toggle */}
-        <label className="relative mr-4 inline-flex cursor-pointer items-center">
+        <label className="relative mr-4 inline-flex cursor-pointer items-center md:mr-5">
           <input
             type="checkbox"
             value="Dark mode toggle"

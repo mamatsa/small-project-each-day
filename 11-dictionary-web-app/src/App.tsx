@@ -48,21 +48,23 @@ const App = () => {
 
   return (
     <div
-      className={`min-h-screen p-6 font-${fontFamily} ${
+      className={`min-h-screen font-${fontFamily} ${
         darkMode ? "dark bg-gray-700 text-white" : "text-gray-500"
       }`}
     >
-      <Header
-        onDarkModeToggle={toggleDarkMode}
-        onFontChange={changeFont}
-        fontFamily={fontFamily}
-        darkMode={darkMode}
-      />
-      <Search onSearch={handleSearch} />
+      <div className="mx-auto max-w-screen-lg p-6 md:p-8">
+        <Header
+          onDarkModeToggle={toggleDarkMode}
+          onFontChange={changeFont}
+          fontFamily={fontFamily}
+          darkMode={darkMode}
+        />
+        <Search onSearch={handleSearch} />
 
-      {wordDetails?.word && <DisplayDetails wordDetails={wordDetails} />}
+        {wordDetails?.word && <DisplayDetails wordDetails={wordDetails} />}
 
-      {notFound && <NotFound />}
+        {notFound && <NotFound />}
+      </div>
     </div>
   );
 };
