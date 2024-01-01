@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Header, Search, DisplayDetails } from "components";
+import { Header, Search, DisplayDetails, NotFound } from "components";
 import { useTheme } from "hooks";
 
 interface Phonetic {
@@ -24,20 +24,24 @@ export interface WordDetails {
 }
 
 const App = () => {
-  const [wordDetails, setWordDetails] = useState<WordDetails>();
+  const [wordDetails, setWordDetails] = useState<WordDetails | null>();
+  const [notFound, setNotFound] = useState(false);
   const { darkMode, fontFamily, changeFont, toggleDarkMode } = useTheme();
 
-  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const searchWord = e.currentTarget.searchInput.value;
+  const handleSearch = async (searchWord: string) => {
     try {
       const response = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${searchWord}`,
       );
+      if (response.status >= 300) {
+        throw new Error(`Request failed. status: ${response.status}`);
+      }
       const data = await response.json();
       setWordDetails(data[0]);
-      console.log(data[0]);
+      setNotFound(false);
     } catch (error) {
+      setNotFound(true);
+      setWordDetails(null);
       console.error(error);
     }
   };
@@ -57,6 +61,8 @@ const App = () => {
       <Search onSearch={handleSearch} />
 
       {wordDetails?.word && <DisplayDetails wordDetails={wordDetails} />}
+
+      {notFound && <NotFound />}
     </div>
   );
 };
