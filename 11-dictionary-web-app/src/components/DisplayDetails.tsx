@@ -1,21 +1,34 @@
 import { WordDetails } from "App";
-import { IconNewWindow } from "./svg";
+import { IconNewWindow, IconPlay } from "./svg";
 
 interface DisplayDetailsProps {
   wordDetails: WordDetails;
 }
 
 const DisplayDetails = ({ wordDetails }: DisplayDetailsProps) => {
+  const handlePlayAudio = () => {
+    const audioSource = wordDetails.phonetics.find(
+      (phonetic) => phonetic.audio,
+    );
+    const audio = new Audio(audioSource?.audio);
+    audio.play();
+  };
+
   return (
     <div className="space-y-8">
       {/* Word, phonetic and audio */}
-      <div>
-        <h1 className="text-[32px] font-bold md:mb-1 md:text-5xl">
-          {wordDetails.word || ""}
-        </h1>
-        <p className="text-purple md:text-lg">
-          {wordDetails.phonetics[1]?.text || ""}
-        </p>
+      <div className="flex items-center justify-between gap-2">
+        <div>
+          <h1 className="w-60 truncate text-[32px] font-bold sm:w-full md:mb-1 md:overflow-visible md:text-5xl ">
+            {wordDetails.word || ""}
+          </h1>
+          <p className="text-purple md:text-lg">
+            {wordDetails.phonetics[0]?.text || ""}
+          </p>
+        </div>
+        <button aria-label="Play word phonetic audio" onClick={handlePlayAudio}>
+          <IconPlay />
+        </button>
       </div>
 
       {wordDetails.meanings.map((meaning) => (
@@ -89,9 +102,12 @@ const DisplayDetails = ({ wordDetails }: DisplayDetailsProps) => {
         <a
           href={wordDetails.sourceUrls[0]}
           target="_blank"
-          className="flex items-center gap-2 underline"
+          className="flex items-center gap-2 truncate underline"
         >
-          {wordDetails.sourceUrls[0]} <IconNewWindow />
+          <span className="w-72 truncate sm:w-full">
+            {wordDetails.sourceUrls[0]}
+          </span>
+          <IconNewWindow />
         </a>
       </div>
     </div>

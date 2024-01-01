@@ -48,7 +48,7 @@ const App = () => {
 
   return (
     <div
-      className={`min-h-screen font-${fontFamily} ${
+      className={`min-h-screen overflow-x-hidden font-${fontFamily} ${
         darkMode ? "dark bg-gray-700 text-white" : "text-gray-500"
       }`}
     >
