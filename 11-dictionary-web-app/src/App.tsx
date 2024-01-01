@@ -1,5 +1,6 @@
-import { useState, useLayoutEffect } from "react";
+import { useState } from "react";
 import { Header, Search, DisplayDetails } from "components";
+import { useTheme } from "hooks";
 
 interface Phonetic {
   audio: string;
@@ -24,22 +25,7 @@ export interface WordDetails {
 
 const App = () => {
   const [wordDetails, setWordDetails] = useState<WordDetails>();
-  const [darkMode, setDarkMode] = useState(false);
-  const [fontFamily, setFontFamily] = useState<"sans" | "serif" | "mono">(
-    "sans",
-  );
-
-  useLayoutEffect(() => {
-    if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
-    ) {
-      setDarkMode(true);
-    }
-
-    setFontFamily(localStorage.fontFamily || "sans");
-  }, []);
+  const { darkMode, fontFamily, changeFont, toggleDarkMode } = useTheme();
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,17 +42,6 @@ const App = () => {
     }
   };
 
-  const handleFontChange = (font: "sans" | "serif" | "mono") => {
-    setFontFamily(font);
-    localStorage.setItem("fontFamily", font);
-  };
-
-  const handleDarkModeToggle = () => {
-    if (darkMode) localStorage.setItem("theme", "light");
-    else localStorage.setItem("theme", "dark");
-    setDarkMode(!darkMode);
-  };
-
   return (
     <div
       className={`min-h-screen p-6 font-${fontFamily} ${
@@ -74,9 +49,10 @@ const App = () => {
       }`}
     >
       <Header
-        onDarkModeToggle={handleDarkModeToggle}
-        onFontChange={handleFontChange}
+        onDarkModeToggle={toggleDarkMode}
+        onFontChange={changeFont}
         fontFamily={fontFamily}
+        darkMode={darkMode}
       />
       <Search onSearch={handleSearch} />
 

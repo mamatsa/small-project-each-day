@@ -5,12 +5,14 @@ interface HeaderProps {
   onDarkModeToggle: () => void;
   onFontChange: (font: "sans" | "serif" | "mono") => void;
   fontFamily: "sans" | "serif" | "mono";
+  darkMode: boolean;
 }
 
 const Header = ({
   onDarkModeToggle,
   onFontChange,
   fontFamily,
+  darkMode,
 }: HeaderProps) => {
   return (
     <header className="flex items-center justify-between">
@@ -28,6 +30,7 @@ const Header = ({
             value="Dark mode toggle"
             className="peer sr-only"
             onChange={onDarkModeToggle}
+            checked={darkMode}
           />
           <div className="peer h-5 w-10 rounded-full bg-gray-300 after:absolute after:start-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:border after:bg-white after:transition-all peer-checked:bg-purple peer-checked:after:translate-x-5 peer-focus:outline-none peer-focus:ring-1 peer-focus:ring-purple rtl:peer-checked:after:-translate-x-full"></div>
         </label>
