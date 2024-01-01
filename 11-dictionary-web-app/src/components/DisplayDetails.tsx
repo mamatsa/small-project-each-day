@@ -11,9 +11,7 @@ const DisplayDetails = ({ wordDetails }: DisplayDetailsProps) => {
       {/* Word, phonetic and audio */}
       <div>
         <h1 className="text-[32px] font-bold">{wordDetails.word || ""}</h1>
-        {wordDetails.phonetics.length > 0 && (
-          <p className="text-purple">{wordDetails.phonetics[0].text || ""}</p>
-        )}
+        <p className="text-purple">{wordDetails.phonetics[1]?.text || ""}</p>
       </div>
 
       {wordDetails.meanings.map((meaning) => (
@@ -26,10 +24,10 @@ const DisplayDetails = ({ wordDetails }: DisplayDetailsProps) => {
 
           {/* Definitions */}
           <h3 className="pb-4 text-gray-300">Meaning</h3>
-          <ul className="text-purple list-disc space-y-3 pl-4 text-[15px] leading-relaxed">
+          <ul className="list-disc space-y-3 pl-4 text-[15px] leading-relaxed text-purple">
             {meaning.definitions.map((definitionItem) => (
               <li key={definitionItem.definition}>
-                <span className=" text-gray-500">
+                <span className="text-gray-500 dark:text-white">
                   {definitionItem.definition}
                 </span>
               </li>
@@ -58,7 +56,7 @@ const DisplayDetails = ({ wordDetails }: DisplayDetailsProps) => {
               <h3 className=" text-gray-300">Synonyms</h3>
               <div className="flex flex-wrap gap-3">
                 {[...new Set(meaning.synonyms)].map((synonym) => (
-                  <span key={synonym} className="text-purple font-bold">
+                  <span key={synonym} className="font-bold text-purple">
                     {synonym}
                   </span>
                 ))}
@@ -72,7 +70,7 @@ const DisplayDetails = ({ wordDetails }: DisplayDetailsProps) => {
               <h3 className=" text-gray-300">Antonyms</h3>
               <div className="flex flex-wrap gap-3">
                 {[...new Set(meaning.antonyms)].map((antonym) => (
-                  <span key={antonym} className="text-purple font-bold">
+                  <span key={antonym} className="font-bold text-purple">
                     {antonym}
                   </span>
                 ))}

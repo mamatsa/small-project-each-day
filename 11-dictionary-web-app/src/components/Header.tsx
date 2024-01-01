@@ -1,7 +1,11 @@
 import { Logo, IconMoon } from "./svg";
 import FontDropdown from "./FontDropdown";
 
-const Header = () => {
+interface HeaderProps {
+  onDarkModeToggle: () => void;
+}
+
+const Header = ({ onDarkModeToggle }: HeaderProps) => {
   return (
     <header className="flex items-center justify-between">
       <Logo />
@@ -17,13 +21,12 @@ const Header = () => {
             type="checkbox"
             value="Dark mode toggle"
             className="peer sr-only"
+            onChange={onDarkModeToggle}
           />
-          <div className="peer-checked:bg-purple peer-focus:ring-purple peer h-5 w-10 rounded-full bg-gray-300 after:absolute after:start-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:border after:bg-white after:transition-all peer-checked:after:translate-x-5 peer-focus:outline-none peer-focus:ring-1 rtl:peer-checked:after:-translate-x-full"></div>
+          <div className="peer h-5 w-10 rounded-full bg-gray-300 after:absolute after:start-[2px] after:top-[2px] after:h-4 after:w-4 after:rounded-full after:border after:bg-white after:transition-all peer-checked:bg-purple peer-checked:after:translate-x-5 peer-focus:outline-none peer-focus:ring-1 peer-focus:ring-purple rtl:peer-checked:after:-translate-x-full"></div>
         </label>
 
-        <button aria-pressed="false" aria-label="Dark mode toggle">
-          <IconMoon />
-        </button>
+        <IconMoon />
       </div>
     </header>
   );

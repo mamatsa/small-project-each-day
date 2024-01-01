@@ -24,6 +24,8 @@ export interface WordDetails {
 
 const App = () => {
   const [wordDetails, setWordDetails] = useState<WordDetails>();
+  const [darkMode, setDarkMode] = useState(false);
+
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const searchWord = e.currentTarget.searchInput.value;
@@ -39,9 +41,17 @@ const App = () => {
     }
   };
 
+  const handleDarkModeToggle = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="p-6 text-gray-500">
-      <Header />
+    <div
+      className={`min-h-screen p-6 ${
+        darkMode ? "dark bg-gray-700 text-white" : "text-gray-500"
+      }`}
+    >
+      <Header onDarkModeToggle={handleDarkModeToggle} />
       <Search onSearch={handleSearch} />
 
       {wordDetails?.word && <DisplayDetails wordDetails={wordDetails} />}

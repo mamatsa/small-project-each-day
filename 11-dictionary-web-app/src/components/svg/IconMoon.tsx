@@ -4,10 +4,9 @@ const IconMoon = () => (
     width="22"
     height="22"
     viewBox="0 0 22 22"
+    className="fill-none stroke-[#838383] dark:stroke-purple"
   >
     <path
-      fill="none"
-      stroke="#838383"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="1.5"
