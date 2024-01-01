@@ -3,16 +3,22 @@ import FontDropdown from "./FontDropdown";
 
 interface HeaderProps {
   onDarkModeToggle: () => void;
+  onFontChange: (font: "sans" | "serif" | "mono") => void;
+  fontFamily: "sans" | "serif" | "mono";
 }
 
-const Header = ({ onDarkModeToggle }: HeaderProps) => {
+const Header = ({
+  onDarkModeToggle,
+  onFontChange,
+  fontFamily,
+}: HeaderProps) => {
   return (
     <header className="flex items-center justify-between">
       <Logo />
 
       <div className="flex items-center">
         {/* Font family select */}
-        <FontDropdown />
+        <FontDropdown onFontChange={onFontChange} fontFamily={fontFamily} />
 
         <div className="mx-4 h-8 w-px bg-gray-100"></div>
         {/* Dark mode toggle */}

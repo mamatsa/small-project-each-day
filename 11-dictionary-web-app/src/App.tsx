@@ -25,6 +25,9 @@ export interface WordDetails {
 const App = () => {
   const [wordDetails, setWordDetails] = useState<WordDetails>();
   const [darkMode, setDarkMode] = useState(false);
+  const [fontFamily, setFontFamily] = useState<"sans" | "serif" | "mono">(
+    "sans",
+  );
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,17 +44,25 @@ const App = () => {
     }
   };
 
+  const handleFontChange = (font: "sans" | "serif" | "mono") => {
+    setFontFamily(font);
+  };
+
   const handleDarkModeToggle = () => {
     setDarkMode(!darkMode);
   };
 
   return (
     <div
-      className={`min-h-screen p-6 ${
+      className={`min-h-screen p-6 font-${fontFamily} ${
         darkMode ? "dark bg-gray-700 text-white" : "text-gray-500"
       }`}
     >
-      <Header onDarkModeToggle={handleDarkModeToggle} />
+      <Header
+        onDarkModeToggle={handleDarkModeToggle}
+        onFontChange={handleFontChange}
+        fontFamily={fontFamily}
+      />
       <Search onSearch={handleSearch} />
 
       {wordDetails?.word && <DisplayDetails wordDetails={wordDetails} />}
