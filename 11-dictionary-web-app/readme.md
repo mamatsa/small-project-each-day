@@ -37,3 +37,4 @@ This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https
 
 - [Challenge URL](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL)
 - [Dictionary API](https://dictionaryapi.dev/)
+- [Live Site URL](https://11-dictionary-web-app.vercel.app/)
