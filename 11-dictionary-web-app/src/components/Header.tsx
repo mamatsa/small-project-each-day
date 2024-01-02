@@ -24,7 +24,10 @@ const Header = ({
 
         <div className="mx-4 h-8 w-px bg-gray-100 md:mx-5"></div>
         {/* Dark mode toggle */}
-        <label className="relative mr-4 inline-flex cursor-pointer items-center md:mr-5">
+        <label
+          className="relative mr-4 inline-flex cursor-pointer items-center md:mr-5"
+          aria-label="Dark mode toggle"
+        >
           <input
             type="checkbox"
             value="Dark mode toggle"
