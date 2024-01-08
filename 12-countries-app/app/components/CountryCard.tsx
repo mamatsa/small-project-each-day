@@ -20,7 +20,8 @@ const CountryCard = ({ country }: CountryProps) => {
       <div className="p-6">
         <h3 className="mb-4 text-lg font-extrabold">{country.name}</h3>
         <p className="text-sm">
-          <span className="font-bold">Population:</span> {country.population}
+          <span className="font-bold">Population:</span>{" "}
+          {country.population.toLocaleString("en-US")}
         </p>
         <p className="text-sm">
           <span className="font-bold">Region:</span> {country.region}
