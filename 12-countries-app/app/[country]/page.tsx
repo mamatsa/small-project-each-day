@@ -1,9 +1,7 @@
 import { promises as fs } from "fs";
-import Link from "next/link";
 import Image from "next/image";
-import { Country } from "../page";
-import CountryDetail from "./components/CountryDetail";
-import BackArrowIcon from "../components/svgs/BackArrowIcon";
+import { Country } from "@/app/page";
+import { CountryDetail, GoBackButton } from "./components/";
 
 const CountryPage = async ({ params }: { params: { country: string } }) => {
   const file = await fs.readFile(process.cwd() + "/app/data.json", "utf8");
@@ -16,11 +14,7 @@ const CountryPage = async ({ params }: { params: { country: string } }) => {
     <>
       {selectedCountry && (
         <div className="px-7 py-6">
-          <Link href="/">
-            <div className="mb-10 flex w-min items-center gap-2 bg-white px-6 py-2 shadow-lg">
-              <BackArrowIcon /> <span>Back</span>
-            </div>
-          </Link>
+          <GoBackButton />
           <Image
             src={selectedCountry.flags.svg}
             alt="flag"

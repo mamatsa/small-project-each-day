@@ -29,12 +29,13 @@ const Home = async ({
     search?: string;
   };
 }) => {
-  const searchWord = searchParams?.search || "";
-
+  // Fetch countries
   const file = await fs.readFile(process.cwd() + "/app/data.json", "utf8");
   const data: Country[] = JSON.parse(file);
   let countries = data;
 
+  // Filter countries if search word is provided
+  const searchWord = searchParams?.search || "";
   if (searchWord) {
     countries = countries.filter((country) => {
       return country.name
@@ -48,7 +49,13 @@ const Home = async ({
       <Search />
       <ul className="flex flex-col items-center gap-10">
         {countries.map((country) => (
-          <Link href={`/${country.alpha2Code}`} key={country.alpha2Code}>
+          <Link
+            href={{
+              pathname: `/${country.alpha2Code}`,
+              query: searchWord && { search: searchWord },
+            }}
+            key={country.alpha2Code}
+          >
             <CountryCard country={country} />
           </Link>
         ))}
