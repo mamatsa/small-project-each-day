@@ -1,6 +1,7 @@
 "use client";
-import SearchIcon from "./svgs/SearchIcon";
+
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { SearchIcon } from "@/app/components";
 
 const Search = () => {
   const searchParams = useSearchParams();
@@ -25,7 +26,8 @@ const Search = () => {
 
       <SearchIcon />
       <input
-        className="w-full rounded-md py-4 pl-16 pr-2 text-sm shadow-sm placeholder:text-dark-gray"
+        id="search"
+        className="input w-full bg-white py-4 pl-16 pr-2 text-sm shadow-sm placeholder:text-dark-gray focus:border-none focus:outline-dark-gray"
         placeholder="Search for a country..."
         defaultValue={searchParams.get("search")?.toString()}
         onChange={(e) => {

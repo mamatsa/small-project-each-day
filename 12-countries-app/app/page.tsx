@@ -1,7 +1,6 @@
 import { promises as fs } from "fs";
-import CountryCard from "./components/CountryCard";
-import Search from "./components/Search";
 import Link from "next/link";
+import { Search, CountryCard, Filter } from "./components/";
 
 export interface Country {
   alpha2Code: string;
@@ -27,6 +26,7 @@ const Home = async ({
 }: {
   searchParams?: {
     search?: string;
+    region?: string;
   };
 }) => {
   // Fetch countries
@@ -34,19 +34,34 @@ const Home = async ({
   const data: Country[] = JSON.parse(file);
   let countries = data;
 
-  // Filter countries if search word is provided
+  // Get search params
   const searchWord = searchParams?.search || "";
-  if (searchWord) {
-    countries = countries.filter((country) => {
-      return country.name
-        .toLowerCase()
-        .includes(searchWord.toLowerCase().trim());
-    });
+  const region = searchParams?.region || "";
+
+  // Helper function to check if a country matches the filters
+  const matchesFilters = (
+    country: Country,
+    searchWord: string,
+    region: string,
+  ) => {
+    const nameMatches =
+      !searchWord ||
+      country.name.toLowerCase().includes(searchWord.toLowerCase().trim());
+    const regionMatches = !region || country.region === region;
+    return nameMatches && regionMatches;
+  };
+
+  // Filter countries if search word or region filter is provided
+  if (searchWord || region) {
+    countries = countries.filter((country) =>
+      matchesFilters(country, searchWord, region),
+    );
   }
 
   return (
-    <main className="mt-6 px-4">
+    <main className="px-4 py-6">
       <Search />
+      <Filter />
       <ul className="flex flex-col items-center gap-10">
         {countries.map((country) => (
           <Link

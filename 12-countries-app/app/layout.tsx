@@ -17,8 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="text-blue-900">
-      <body className={`bg-light-gray ${nunito.className}`}>
+    <html lang="en">
+      <body
+        className={`min-h-screen bg-light-gray text-blue-900 ${nunito.className}`}
+      >
         <Header />
         {children}
       </body>
