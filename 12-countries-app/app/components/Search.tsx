@@ -19,7 +19,7 @@ const Search = () => {
   };
 
   return (
-    <div className="relative mb-10 flex flex-1 flex-shrink-0 ">
+    <div className="relative mb-10 flex flex-1 flex-shrink-0 2xl:mb-14">
       <label htmlFor="search" className="sr-only">
         Search
       </label>
@@ -27,7 +27,7 @@ const Search = () => {
       <SearchIcon />
       <input
         id="search"
-        className="input w-full bg-white py-4 pl-16 pr-2 text-sm shadow-sm placeholder:text-dark-gray focus:border-none focus:outline-dark-gray"
+        className="input w-full max-w-[480px] bg-white py-4 pl-16 pr-2 text-sm shadow-sm placeholder:text-dark-gray focus:border-light-gray focus:outline-dark-gray md:py-6 md:pl-20 md:text-lg 2xl:max-w-[600px] 2xl:py-8 2xl:text-xl"
         placeholder="Search for a country..."
         defaultValue={searchParams.get("search")?.toString()}
         onChange={(e) => {

@@ -59,10 +59,10 @@ const Home = async ({ searchParams }: HomeProps) => {
   }
 
   return (
-    <main className="px-4 py-6">
+    <main className="px-4 py-6 sm:px-12 2xl:px-20 2xl:py-10">
       <Search />
       <Filter />
-      <ul className="flex flex-col items-center gap-10">
+      <ul className="grid grid-flow-row grid-cols-1 justify-center gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {countries.map((country) => (
           <Link
             href={{

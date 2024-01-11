@@ -1,10 +1,9 @@
 const MoonIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="18"
-    height="17"
     viewBox="0 0 18 17"
     fill="none"
+    className="h-[17px] w-auto sm:h-[20px] lg:h-[24px] 2xl:h-[28px]"
   >
     <path
       fillRule="evenodd"

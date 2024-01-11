@@ -30,8 +30,8 @@ const Filter = () => {
   };
 
   return (
-    <details ref={detailsRef} className="dropdown mb-5">
-      <summary className="btn m-1 flex items-center gap-6 border-none bg-white text-sm text-blue-900 hover:bg-light-gray">
+    <details ref={detailsRef} className="dropdown mb-5 2xl:mb-8">
+      <summary className="btn flex items-center gap-6 border-none bg-white text-sm text-blue-900 hover:bg-light-gray 2xl:text-base">
         <span>Filter by Region</span>
         <DropdownExpandIcon />
       </summary>
