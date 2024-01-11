@@ -19,6 +19,7 @@ const config: Config = {
       white: "hsl(0, 0%, 100%)",
       "dark-gray": "hsl(0, 0%, 52%)",
       "light-gray": "hsl(0, 0%, 98%)",
+      gray: "hsl(0, 0%, 90%)",
     },
   },
   daisyui: {

@@ -60,8 +60,10 @@ const Home = async ({ searchParams }: HomeProps) => {
 
   return (
     <main className="px-4 py-6 sm:px-12 2xl:px-20 2xl:py-10">
-      <Search />
-      <Filter />
+      <div className="md:mb-10 md:flex md:items-center md:justify-between md:gap-4 2xl:mb-14">
+        <Search />
+        <Filter />
+      </div>
       <ul className="grid grid-flow-row grid-cols-1 justify-center gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {countries.map((country) => (
           <Link

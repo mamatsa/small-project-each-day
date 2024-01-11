@@ -3,7 +3,7 @@ const SearchIcon = () => (
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="absolute left-8 top-1/2 h-auto w-[16px] -translate-y-1/2 md:w-[18px] 2xl:w-[20px]"
+    className="absolute left-8 top-1/2 h-auto w-[16px] -translate-y-1/2 2xl:w-[18px]"
   >
     <path
       fillRule="evenodd"
