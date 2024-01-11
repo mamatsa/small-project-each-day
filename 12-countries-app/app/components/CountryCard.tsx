@@ -19,7 +19,7 @@ const CountryCard = ({ country }: CountryProps) => {
           priority={true}
         />
       </div>
-      <div className="p-6 pb-12">
+      <div className="p-6 pb-12 2xl:space-y-1 2xl:p-10 2xl:pb-16">
         <h3 className="mb-4 text-lg font-extrabold 2xl:text-xl">
           {country.name}
         </h3>
