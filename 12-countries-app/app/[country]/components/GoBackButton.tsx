@@ -15,7 +15,7 @@ const GoBackButton = () => {
         query: searchWord && { search: searchWord },
       }}
     >
-      <div className="mb-10 flex w-min items-center gap-2 rounded bg-white px-6 py-2 shadow-lg hover:bg-light-gray dark:bg-blue-700 lg:mb-12 lg:rounded-md xl:mb-14 2xl:mb-20 2xl:text-lg">
+      <div className="mb-10 flex w-min items-center gap-2 rounded bg-white px-6 py-2 shadow-lg hover:bg-light-gray dark:bg-blue-700 dark:hover:bg-blue-800 lg:mb-12 lg:rounded-md xl:mb-14 2xl:mb-20 2xl:text-lg">
         <BackArrowIcon /> <span>Back</span>
       </div>
     </Link>
