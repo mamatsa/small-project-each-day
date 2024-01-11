@@ -1,4 +1,4 @@
-import { Country } from "../page";
+import { Country } from "@/app/page";
 import Image from "next/image";
 
 interface CountryProps {

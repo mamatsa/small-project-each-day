@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import BackArrowIcon from "@/app/components/svgs/BackArrowIcon";
 import { useSearchParams } from "next/navigation";
+import { BackArrowIcon } from "@/app/components";
 
 const GoBackButton = () => {
   const searchParams = useSearchParams();

@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import Link from "next/link";
-import { Search, CountryCard, Filter } from "./components/";
+import { Search, CountryCard, Filter } from "@/app/components";
 
 export interface Country {
   alpha2Code: string;
@@ -21,14 +21,14 @@ export interface Country {
   };
 }
 
-const Home = async ({
-  searchParams,
-}: {
+interface HomeProps {
   searchParams?: {
     search?: string;
     region?: string;
   };
-}) => {
+}
+
+const Home = async ({ searchParams }: HomeProps) => {
   // Fetch countries
   const file = await fs.readFile(process.cwd() + "/app/data.json", "utf8");
   const data: Country[] = JSON.parse(file);
