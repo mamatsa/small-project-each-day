@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Search, CountryCard, Filter } from "@/app/components";
 
 export interface Country {
-  alpha2Code: string;
+  alpha3Code: string;
   name: string;
   population: number;
   region: string;
@@ -36,7 +36,7 @@ const Home = async ({ searchParams }: HomeProps) => {
 
   // Get search params
   const searchWord = searchParams?.search || "";
-  const region = searchParams?.region || "";
+  const filterRegion = searchParams?.region || "";
 
   // Helper function to check if a country matches the filters
   const matchesFilters = (
@@ -52,9 +52,9 @@ const Home = async ({ searchParams }: HomeProps) => {
   };
 
   // Filter countries if search word or region filter is provided
-  if (searchWord || region) {
+  if (searchWord || filterRegion) {
     countries = countries.filter((country) =>
-      matchesFilters(country, searchWord, region),
+      matchesFilters(country, searchWord, filterRegion),
     );
   }
 
@@ -68,10 +68,13 @@ const Home = async ({ searchParams }: HomeProps) => {
         {countries.map((country) => (
           <Link
             href={{
-              pathname: `/${country.alpha2Code}`,
-              query: searchWord && { search: searchWord },
+              pathname: `/${country.alpha3Code}`,
+              query: {
+                ...(searchWord && { search: searchWord }),
+                ...(filterRegion && { region: filterRegion }),
+              },
             }}
-            key={country.alpha2Code}
+            key={country.alpha3Code}
           >
             <CountryCard country={country} />
           </Link>

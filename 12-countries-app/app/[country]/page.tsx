@@ -1,13 +1,13 @@
 import { promises as fs } from "fs";
 import Image from "next/image";
 import { Country } from "@/app/page";
-import { CountryDetail, GoBackButton } from "./components/";
+import { CountryDetail, GoBackButton, BorderCountries } from "./components";
 
 const CountryPage = async ({ params }: { params: { country: string } }) => {
   const file = await fs.readFile(process.cwd() + "/app/data.json", "utf8");
   const countries: Country[] = JSON.parse(file);
   const selectedCountry = countries.find(
-    (country) => country.alpha2Code === params.country,
+    (country) => country.alpha3Code === params.country,
   );
 
   return (
@@ -31,6 +31,7 @@ const CountryPage = async ({ params }: { params: { country: string } }) => {
                 {selectedCountry.name}
               </h1>
 
+              {/* Country details */}
               <div className="md:flex md:gap-8 lg:gap-12 xl:gap-20 2xl:gap-32">
                 <div>
                   <CountryDetail label={"Native Name: "}>
@@ -79,22 +80,9 @@ const CountryPage = async ({ params }: { params: { country: string } }) => {
                 </div>
               </div>
 
+              {/* Bordering country list */}
               {selectedCountry.borders && (
-                <div className="md:mt-6 md:flex md:items-center md:gap-4 lg:mt-10">
-                  <h3 className="mb-3 whitespace-nowrap font-semibold md:mb-0 2xl:text-lg">
-                    Border Countries:
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-2">
-                    {selectedCountry.borders.map((border) => (
-                      <span
-                        key={border}
-                        className="rounded-sm bg-white px-5 py-1 text-xs font-light shadow-md dark:bg-blue-700 2xl:text-base"
-                      >
-                        {border}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <BorderCountries selectedCountry={selectedCountry} />
               )}
             </div>
           </div>
