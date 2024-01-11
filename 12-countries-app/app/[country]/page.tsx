@@ -88,7 +88,7 @@ const CountryPage = async ({ params }: { params: { country: string } }) => {
                     {selectedCountry.borders.map((border) => (
                       <span
                         key={border}
-                        className="rounded-sm bg-white px-5 py-1 text-xs font-light shadow-md 2xl:text-base"
+                        className="rounded-sm bg-white px-5 py-1 text-xs font-light shadow-md dark:bg-blue-700 2xl:text-base"
                       >
                         {border}
                       </span>

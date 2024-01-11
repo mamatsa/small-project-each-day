@@ -31,16 +31,17 @@ const Filter = () => {
 
   return (
     <details ref={detailsRef} className="dropdown mb-5 md:mb-0">
-      <summary className="btn flex w-44 items-center gap-6 border-none bg-white text-sm text-blue-900 hover:bg-light-gray 2xl:h-16 2xl:w-52 2xl:text-base">
+      <summary className="btn flex w-44 items-center gap-6 border-none bg-white text-sm hover:bg-light-gray dark:bg-blue-700 2xl:h-16 2xl:w-52 2xl:text-base">
         <span>Filter by Region</span>
         <DropdownExpandIcon />
       </summary>
-      <ul className="menu dropdown-content z-[1] mt-1 w-44 space-y-0.5 rounded-lg bg-white p-2 shadow 2xl:w-52 2xl:text-base">
+      <ul className="menu dropdown-content z-[1] mt-1 w-44 space-y-0.5 rounded-lg bg-white p-2 shadow dark:bg-blue-700 2xl:w-52 2xl:text-base">
         {regions.map((region) => (
           <li key={region}>
             <a
               className={`hover:bg-gray hover:text-blue-900 ${
-                region === regionParam && "bg-blue-700 text-white"
+                region === regionParam &&
+                "bg-blue-700 text-white dark:bg-light-gray dark:text-blue-900"
               }`}
               onClick={() => handleFilter(region)}
             >

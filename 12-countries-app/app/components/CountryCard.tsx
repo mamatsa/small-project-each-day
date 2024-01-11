@@ -7,7 +7,7 @@ interface CountryProps {
 
 const CountryCard = ({ country }: CountryProps) => {
   return (
-    <li className="overflow-hidden rounded-md bg-white shadow">
+    <li className="overflow-hidden rounded-md bg-white shadow dark:bg-blue-700">
       <div className="flex w-full items-center justify-center overflow-hidden sm:h-[120px] md:h-[180px] 2xl:h-[220px]">
         <Image
           src={country.flags.svg}

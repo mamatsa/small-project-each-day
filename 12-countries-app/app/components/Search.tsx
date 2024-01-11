@@ -27,7 +27,7 @@ const Search = () => {
       <SearchIcon />
       <input
         id="search"
-        className="input w-full max-w-[480px] bg-white py-4 pl-16 pr-2 text-sm shadow-sm placeholder:text-dark-gray focus:border-light-gray focus:outline-dark-gray md:py-6 2xl:max-w-[600px] 2xl:py-8 2xl:pl-20 2xl:text-lg"
+        className="input w-full max-w-[480px] bg-white py-4 pl-16 pr-2 text-sm shadow-sm placeholder:text-dark-gray focus:border-light-gray focus:outline-dark-gray dark:bg-blue-700 md:py-6 2xl:max-w-[600px] 2xl:py-8 2xl:pl-20 2xl:text-lg"
         placeholder="Search for a country..."
         defaultValue={searchParams.get("search")?.toString()}
         onChange={(e) => {
