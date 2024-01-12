@@ -1,4 +1,5 @@
 import { promises as fs } from "fs";
+import path from "path";
 import Link from "next/link";
 import { Search, CountryCard, Filter } from "@/app/components";
 
@@ -30,8 +31,9 @@ interface HomeProps {
 
 const Home = async ({ searchParams }: HomeProps) => {
   // Fetch countries
-  const file = await fs.readFile(process.cwd() + "/app/data.json", "utf8");
-  const data: Country[] = JSON.parse(file);
+  const filePath = path.join(process.cwd(), "app/data.json");
+  const jsonData = await fs.readFile(filePath, "utf8");
+  const data: Country[] = JSON.parse(jsonData);
   let countries = data;
 
   // Get search params
