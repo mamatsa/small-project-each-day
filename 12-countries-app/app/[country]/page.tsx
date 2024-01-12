@@ -5,8 +5,7 @@ import { Country } from "@/app/page";
 import { CountryDetail, GoBackButton, BorderCountries } from "./components";
 
 const CountryPage = async ({ params }: { params: { country: string } }) => {
-  const filePath = path.join(process.cwd(), "app/data.json");
-  const jsonData = await fs.readFile(filePath, "utf8");
+  const jsonData = await fs.readFile("./app/data.json", "utf8");
   const countries: Country[] = JSON.parse(jsonData);
   const selectedCountry = countries.find(
     (country) => country.alpha3Code === params.country,
