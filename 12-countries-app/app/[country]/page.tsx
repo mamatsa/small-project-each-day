@@ -1,12 +1,11 @@
 import { promises as fs } from "fs";
-import path from "path";
 import Image from "next/image";
 import { Country } from "@/app/page";
 import { CountryDetail, GoBackButton, BorderCountries } from "./components";
 
 const CountryPage = async ({ params }: { params: { country: string } }) => {
-  const jsonData = await fs.readFile("./app/data.json", "utf8");
-  const countries: Country[] = JSON.parse(jsonData);
+  const file = await fs.readFile(process.cwd() + "/data.json", "utf8");
+  const countries: Country[] = JSON.parse(file);
   const selectedCountry = countries.find(
     (country) => country.alpha3Code === params.country,
   );

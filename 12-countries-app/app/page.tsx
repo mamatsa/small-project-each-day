@@ -30,8 +30,8 @@ interface HomeProps {
 
 const Home = async ({ searchParams }: HomeProps) => {
   // Fetch countries
-  const jsonData = await fs.readFile("./app/data.json", "utf8");
-  const data: Country[] = JSON.parse(jsonData);
+  const file = await fs.readFile(process.cwd() + "/data.json", "utf8");
+  const data: Country[] = JSON.parse(file);
   let countries = data;
 
   // Get search params
