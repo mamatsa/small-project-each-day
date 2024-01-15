@@ -35,3 +35,5 @@ Users should be able to:
 ## Links
 
 - [Challenge URL](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)
+- [Countries API](https://restcountries.com/)
+- [Live Site URL](https://12-countries-app.vercel.app/)

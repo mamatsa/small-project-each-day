@@ -13,3 +13,4 @@
 | 09  |         [Frontend quiz app](https://github.com/mamatsa/small-projects/tree/main/09-frontend-quiz-app)         | [Live Demo](https://09-frontend-quiz-app.vercel.app/)  |
 | 10  |                  [Todo app](https://github.com/mamatsa/small-projects/tree/main/10-todo-app)                  |      [Live Demo](https://10-todo-app.vercel.app/)      |
 | 11  |        [Dictionary web app](https://github.com/mamatsa/small-projects/tree/main/11-dictionary-web-app)        | [Live Demo](https://11-dictionary-web-app.vercel.app/) |
+| 12  |             [Countries app](https://github.com/mamatsa/small-projects/tree/main/12-countries-app)             |   [Live Demo](https://12-countries-app.vercel.app/)    |
