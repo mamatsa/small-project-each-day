@@ -14,7 +14,6 @@ export interface Country {
   capital: string[];
   subregion: string;
   borders: string[];
-  timezones: string[];
   tld: string[];
   currencies: { [key: string]: { name: string; symbol: string } };
   languages: {
@@ -81,16 +80,6 @@ const CountryPage = async ({ params }: CountryProps) => {
             </div>
 
             <div className="my-8 md:my-0">
-              <CountryDetail label="Timezone: ">
-                {selectedCountry.timezones.length > 1
-                  ? selectedCountry.timezones[0] +
-                    " - " +
-                    selectedCountry.timezones[
-                      selectedCountry.timezones.length - 1
-                    ]
-                  : selectedCountry.timezones[0]}
-              </CountryDetail>
-
               <CountryDetail label="Area: ">
                 {selectedCountry.area.toLocaleString("en-US")} km<sup>2</sup>
               </CountryDetail>
