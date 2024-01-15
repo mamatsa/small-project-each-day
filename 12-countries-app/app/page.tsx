@@ -1,21 +1,14 @@
-import { promises as fs } from "fs";
 import Link from "next/link";
 import { Search, CountryCard, Filter } from "@/app/components";
 
 export interface Country {
-  alpha3Code: string;
-  name: string;
+  cca3: string;
+  name: {
+    common: string;
+  };
   population: number;
   region: string;
-  capital: string;
-  nativeName: string;
-  subregion: string;
-  borders: string[];
-  topLevelDomain: string[];
-  currencies: { code: string; name: string }[];
-  languages: {
-    name: string;
-  }[];
+  capital: string[];
   flags: {
     svg: string;
   };
@@ -30,9 +23,8 @@ interface HomeProps {
 
 const Home = async ({ searchParams }: HomeProps) => {
   // Fetch countries
-  const file = await fs.readFile(process.cwd() + "/app/data.json", "utf8");
-  const data: Country[] = JSON.parse(file);
-  let countries = data;
+  const res = await fetch("https://restcountries.com/v3.1/all");
+  let countries: Country[] = await res.json();
 
   // Get search params
   const searchWord = searchParams?.search || "";
@@ -46,7 +38,9 @@ const Home = async ({ searchParams }: HomeProps) => {
   ) => {
     const nameMatches =
       !searchWord ||
-      country.name.toLowerCase().includes(searchWord.toLowerCase().trim());
+      country.name.common
+        .toLowerCase()
+        .includes(searchWord.toLowerCase().trim());
     const regionMatches = !region || country.region === region;
     return nameMatches && regionMatches;
   };
@@ -68,13 +62,13 @@ const Home = async ({ searchParams }: HomeProps) => {
         {countries.map((country) => (
           <Link
             href={{
-              pathname: `/${country.alpha3Code}`,
+              pathname: `/${country.cca3}`,
               query: {
                 ...(searchWord && { search: searchWord }),
                 ...(filterRegion && { region: filterRegion }),
               },
             }}
-            key={country.alpha3Code}
+            key={country.cca3}
           >
             <CountryCard country={country} />
           </Link>

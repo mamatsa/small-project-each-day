@@ -1,14 +1,13 @@
 "use client";
 
-import { Country } from "@/app/page";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 interface BorderCountriesProps {
-  selectedCountry: Country;
+  borders: string[];
 }
 
-const BorderCountries = ({ selectedCountry }: BorderCountriesProps) => {
+const BorderCountries = ({ borders }: BorderCountriesProps) => {
   const searchParams = useSearchParams();
   const searchWord = searchParams.get("search");
   const filterRegion = searchParams.get("region");
@@ -19,7 +18,7 @@ const BorderCountries = ({ selectedCountry }: BorderCountriesProps) => {
         Border Countries:
       </h3>
       <div className="flex flex-wrap items-center gap-2">
-        {selectedCountry.borders.map((border) => (
+        {borders.map((border) => (
           <Link
             href={{
               pathname: "/" + border,
