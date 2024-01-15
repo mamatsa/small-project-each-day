@@ -48,7 +48,6 @@ const CountryPage = async ({ params }: CountryProps) => {
           height="0"
           sizes="100vw"
           className="h-auto w-full rounded md:w-2/5 lg:rounded-md"
-          priority={true}
         />
 
         <div>

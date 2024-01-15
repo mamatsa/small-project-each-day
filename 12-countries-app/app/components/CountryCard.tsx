@@ -16,7 +16,6 @@ const CountryCard = ({ country }: CountryProps) => {
           height="0"
           sizes="100vw"
           className="h-auto w-full overflow-hidden"
-          priority={true}
         />
       </div>
       <div className="p-6 pb-12 2xl:space-y-1 2xl:p-10 2xl:pb-16">
