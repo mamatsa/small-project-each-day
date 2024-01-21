@@ -21,6 +21,9 @@ const config: Config = {
       uranus: "#1ec2a4",
       neptune: "#2d68f0",
     },
+    backgroundImage: {
+      stars: "url('/images/backgrounds/background-stars.svg')",
+    },
   },
   plugins: [],
 };
