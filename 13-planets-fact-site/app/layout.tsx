@@ -30,10 +30,8 @@ export default function RootLayout({
       className={`${antonio.variable} ${league_spartan.variable}`}
     >
       <body className={`bg-stars bg-dark-blue ${antonio.className}`}>
-        <div className="">
-          <Navbar />
-          {children}
-        </div>
+        <Navbar />
+        {children}
       </body>
     </html>
   );
