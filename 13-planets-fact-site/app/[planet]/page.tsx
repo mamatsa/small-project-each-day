@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
-import InfoBox from "./components/InfoBox";
 import Image from "next/image";
+import { InfoBox, InnerNavigation } from "./components/";
 
 interface PlanetProps {
   params: { planet: string };
@@ -40,22 +40,24 @@ export default async function PlanetPage({ params }: PlanetProps) {
   )[0];
 
   return (
-    <div className="flex h-[calc(100vh-65px)] flex-col justify-evenly px-40 text-white">
+    <div className="flex flex-col justify-evenly px-40 py-8 text-white">
       {/* top  */}
       <div className="grid grid-cols-3">
         <div className="col-start-1 col-end-3 place-self-center">
           <Image
             src={selectedPlanet.images.planet}
             alt={selectedPlanet.name}
-            width={selectedPlanet.images.width / 1.2}
-            height={selectedPlanet.images.width / 1.2}
+            width={selectedPlanet.images.width / 1.25}
+            height={selectedPlanet.images.width / 1.25}
             priority
           />
         </div>
         <div>
           <h1 className="mb-6 text-7xl uppercase">{selectedPlanet.name}</h1>
-          <p className="mb-10 text-sm">{selectedPlanet.overview.content}</p>
-          <p className="mb-10 flex gap-2 text-sm opacity-50">
+          <p className="mb-5 w-[40ch] text-sm">
+            {selectedPlanet.overview.content}
+          </p>
+          <p className="mb-4 flex gap-2 text-sm opacity-50">
             Source:
             <a
               href={selectedPlanet.overview.source}
@@ -71,11 +73,13 @@ export default async function PlanetPage({ params }: PlanetProps) {
               />
             </a>
           </p>
+
+          <InnerNavigation currentPlanet={params.planet} />
         </div>
       </div>
 
       {/* bottom */}
-      <div className="grid grid-cols-4 gap-7 justify-self-end">
+      <div className="absolute bottom-6 left-40 right-40 grid grid-cols-4 gap-7 justify-self-end">
         <InfoBox label="ROTATION TIME" data={selectedPlanet.rotation} />
         <InfoBox label="REVOLUTION TIME" data={selectedPlanet.revolution} />
         <InfoBox label="RADIUS" data={selectedPlanet.radius} />
