@@ -1,6 +1,11 @@
 import { promises as fs } from "fs";
 import Image from "next/image";
-import { InfoBox, InnerNavigation } from "./components/";
+import {
+  Description,
+  InfoBox,
+  InnerNavigation,
+  PlanetImage,
+} from "./components/";
 
 interface PlanetProps {
   params: { planet: string };
@@ -42,21 +47,11 @@ export default async function PlanetPage({ params }: PlanetProps) {
   return (
     <div className="flex flex-col justify-evenly px-40 py-8 text-white">
       {/* top  */}
-      <div className="grid grid-cols-3">
-        <div className="col-start-1 col-end-3 place-self-center">
-          <Image
-            src={selectedPlanet.images.planet}
-            alt={selectedPlanet.name}
-            width={selectedPlanet.images.width / 1.25}
-            height={selectedPlanet.images.width / 1.25}
-            priority
-          />
-        </div>
+      <div className="relative grid grid-cols-3">
+        <PlanetImage selectedPlanet={selectedPlanet} />
         <div>
-          <h1 className="mb-6 text-7xl uppercase">{selectedPlanet.name}</h1>
-          <p className="mb-5 w-[40ch] text-sm">
-            {selectedPlanet.overview.content}
-          </p>
+          <h1 className="mb-6 text-6xl uppercase">{selectedPlanet.name}</h1>
+          <Description selectedPlanet={selectedPlanet} />
           <p className="mb-4 flex gap-2 text-sm opacity-50">
             Source:
             <a

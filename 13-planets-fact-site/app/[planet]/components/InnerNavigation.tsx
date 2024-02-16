@@ -11,47 +11,35 @@ const InnerNavigation = ({ currentPlanet }: { currentPlanet: string }) => {
   let bgColor = "";
   switch (currentPlanet) {
     case "mercury": {
-      //statements;
       bgColor = "bg-mercury";
       break;
     }
     case "venus": {
-      //statements;
       bgColor = "bg-venus";
       break;
     }
     case "earth": {
-      //statements;
       bgColor = "bg-earth";
       break;
     }
     case "mars": {
-      //statements;
       bgColor = "bg-mars";
       break;
     }
     case "jupiter": {
-      //statements;
       bgColor = "bg-jupiter";
       break;
     }
     case "saturn": {
-      //statements;
       bgColor = "bg-saturn";
       break;
     }
     case "uranus": {
-      //statements;
       bgColor = "bg-uranus";
       break;
     }
     case "neptune": {
-      //statements;
       bgColor = "bg-neptune";
-      break;
-    }
-    default: {
-      //statements;
       break;
     }
   }
