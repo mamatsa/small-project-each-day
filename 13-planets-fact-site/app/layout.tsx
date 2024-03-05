@@ -29,7 +29,7 @@ export default function RootLayout({
       lang="en"
       className={`${antonio.variable} ${league_spartan.variable}`}
     >
-      <body className={`bg-stars bg-dark-blue ${antonio.className}`}>
+      <body className={`bg-dark-blue bg-stars ${antonio.className}`}>
         <Navbar />
         {children}
       </body>

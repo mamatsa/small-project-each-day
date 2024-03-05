@@ -62,7 +62,7 @@ export default async function PlanetPage({ params }: PlanetProps) {
               Wikipedia
               <Image
                 src="/images/icons/icon-source.svg"
-                alt={selectedPlanet.name}
+                alt="arrow"
                 width={12}
                 height={12}
               />
@@ -74,7 +74,7 @@ export default async function PlanetPage({ params }: PlanetProps) {
       </div>
 
       {/* bottom */}
-      <div className="absolute bottom-6 left-40 right-40 grid grid-cols-4 gap-7 justify-self-end">
+      <div className="absolute bottom-6 left-40 right-40 grid grid-cols-4 gap-7">
         <InfoBox label="ROTATION TIME" data={selectedPlanet.rotation} />
         <InfoBox label="REVOLUTION TIME" data={selectedPlanet.revolution} />
         <InfoBox label="RADIUS" data={selectedPlanet.radius} />
