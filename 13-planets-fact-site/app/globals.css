@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+h3,
+h4,
+p {
+  font-family: var(--font-spartan);
+}
+
+h1,
+h2 {
+  font-family: var(--font-antonio);
+}
