@@ -50,9 +50,11 @@ export default async function PlanetPage({ params }: PlanetProps) {
       <div className="relative grid grid-cols-3">
         <PlanetImage selectedPlanet={selectedPlanet} />
         <div>
-          <h1 className="mb-6 text-6xl uppercase">{selectedPlanet.name}</h1>
+          <h1 className="mb-6 text-6xl uppercase 2xl:text-8xl">
+            {selectedPlanet.name}
+          </h1>
           <Description selectedPlanet={selectedPlanet} />
-          <p className="mb-4 flex gap-2 text-sm opacity-50">
+          <p className="mb-4 flex gap-2 text-sm opacity-50 2xl:text-lg">
             Source:
             <a
               href={selectedPlanet.overview.source}

@@ -48,7 +48,7 @@ const InnerNavigation = ({ currentPlanet }: { currentPlanet: string }) => {
     <nav>
       <Link href={currentPlanet}>
         <div
-          className={`mb-3 cursor-pointer border border-dark-gray px-6 py-3 text-xs font-bold tracking-widest ${!display ? bgColor : "hover:bg-dark-gray"}`}
+          className={`mb-3 cursor-pointer border border-dark-gray px-6 py-3 text-xs font-bold tracking-widest 2xl:text-base ${!display ? bgColor : "hover:bg-dark-gray"}`}
         >
           <p className="align-middle text-white">
             <span className="pr-3 text-gray">01</span> OVERVIEW
@@ -63,7 +63,7 @@ const InnerNavigation = ({ currentPlanet }: { currentPlanet: string }) => {
         }}
       >
         <div
-          className={`mb-3 cursor-pointer border border-dark-gray px-6 py-3 text-xs font-bold tracking-widest ${display === "structure" ? bgColor : "hover:bg-dark-gray"}`}
+          className={`mb-3 cursor-pointer border border-dark-gray px-6 py-3 text-xs font-bold tracking-widest 2xl:text-base ${display === "structure" ? bgColor : "hover:bg-dark-gray"}`}
         >
           <p className="align-middle text-white">
             <span className="pr-3 text-gray">02</span> INTERNAL STRUCTURE
@@ -78,7 +78,7 @@ const InnerNavigation = ({ currentPlanet }: { currentPlanet: string }) => {
         }}
       >
         <div
-          className={`border border-dark-gray px-6 py-3 text-xs font-bold tracking-widest ${display === "geology" ? bgColor : "hover:bg-dark-gray"}`}
+          className={`border border-dark-gray px-6 py-3 text-xs font-bold tracking-widest 2xl:text-base ${display === "geology" ? bgColor : "hover:bg-dark-gray"}`}
         >
           <p className="align-middle text-white">
             <span className="pr-3 text-gray">03</span> SURFACE GEOLOGY

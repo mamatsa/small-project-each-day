@@ -18,8 +18,8 @@ const PlanetImage = ({ selectedPlanet }: { selectedPlanet: Planet }) => {
       <Image
         src={imageSrc}
         alt={selectedPlanet.name}
-        width={selectedPlanet.images.width / 1.25}
-        height={selectedPlanet.images.width / 1.25}
+        width={selectedPlanet.images.width / 1.2}
+        height={selectedPlanet.images.width / 1.2}
         priority
       />
       {display === "geology" && (

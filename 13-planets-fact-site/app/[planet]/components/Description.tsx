@@ -17,7 +17,9 @@ const Description = ({ selectedPlanet }: { selectedPlanet: Planet }) => {
     content = selectedPlanet.geology.content;
   }
 
-  return <p className="mb-5 h-28 w-[40ch] text-sm">{content}</p>;
+  return (
+    <p className="mb-5 h-28 w-[40ch] text-sm 2xl:h-36 2xl:text-lg">{content}</p>
+  );
 };
 
 export default Description;
