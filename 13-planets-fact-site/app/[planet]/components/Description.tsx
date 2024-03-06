@@ -18,7 +18,9 @@ const Description = ({ selectedPlanet }: { selectedPlanet: Planet }) => {
   }
 
   return (
-    <p className="mb-5 h-28 w-[40ch] text-sm 2xl:h-36 2xl:text-lg">{content}</p>
+    <p className="mb-5 w-full text-base sm:h-28 sm:text-sm md:w-[40ch] 2xl:h-36 2xl:text-lg">
+      {content}
+    </p>
   );
 };
 

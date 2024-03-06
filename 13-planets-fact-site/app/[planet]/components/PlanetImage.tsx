@@ -14,7 +14,7 @@ const PlanetImage = ({ selectedPlanet }: { selectedPlanet: Planet }) => {
   }
 
   return (
-    <div className="col-start-1 col-end-3 place-self-center">
+    <div className="relative col-start-1 col-end-3 place-self-center">
       <Image
         src={imageSrc}
         alt={selectedPlanet.name}
@@ -23,7 +23,7 @@ const PlanetImage = ({ selectedPlanet }: { selectedPlanet: Planet }) => {
         priority
       />
       {display === "geology" && (
-        <div className="absolute bottom-0 left-1/3 flex -translate-x-1/2 justify-center">
+        <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 justify-center">
           <Image
             src={selectedPlanet.images.geology}
             alt={selectedPlanet.name}
