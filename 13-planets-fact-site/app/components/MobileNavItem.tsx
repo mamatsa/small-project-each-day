@@ -9,7 +9,7 @@ interface Props {
 
 const MobileNavItem = ({ title, href, color }: Props) => {
   return (
-    <li className="border-b border-gray border-opacity-30  last:border-none">
+    <li className="border-b border-gray border-opacity-30 last:border-none">
       <Link href={href} className="flex items-center justify-between px-6 py-5">
         <div className="flex items-center gap-4">
           <div className={`h-5 w-5 rounded-full ${color}`}></div>
@@ -20,6 +20,7 @@ const MobileNavItem = ({ title, href, color }: Props) => {
           width={8}
           height={16}
           alt="arrow"
+          className="h-4 w-2"
         />
       </Link>
     </li>
