@@ -1,4 +1,4 @@
-# Countries app
+# Planets fact site
 
 This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/planets-fact-site-gazqN8w_f).
 
@@ -30,3 +30,4 @@ Your users should be able to:
 ## Links
 
 - [Challenge URL](https://www.frontendmentor.io/challenges/planets-fact-site-gazqN8w_f)
+- [Live Site URL](https://13-planets-fact-site.vercel.app/)

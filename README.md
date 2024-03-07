@@ -14,3 +14,4 @@
 | 10  |                  [Todo app](https://github.com/mamatsa/small-projects/tree/main/10-todo-app)                  |      [Live Demo](https://10-todo-app.vercel.app/)      |
 | 11  |        [Dictionary web app](https://github.com/mamatsa/small-projects/tree/main/11-dictionary-web-app)        | [Live Demo](https://11-dictionary-web-app.vercel.app/) |
 | 12  |             [Countries app](https://github.com/mamatsa/small-projects/tree/main/12-countries-app)             |   [Live Demo](https://12-countries-app.vercel.app/)    |
+| 13  |         [Planets fact site](https://github.com/mamatsa/small-projects/tree/main/13-planets-fact-site)         | [Live Demo](https://13-planets-fact-site.vercel.app/)  |
