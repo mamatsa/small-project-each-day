@@ -7,11 +7,12 @@ import {
   PlanetImage,
 } from "./components/";
 
-interface PlanetProps {
+interface PlanetPageProps {
   params: { planet: string };
+  searchParams?: { display: string };
 }
 
-export default function PlanetPage({ params }: PlanetProps) {
+export default function PlanetPage({ params, searchParams }: PlanetPageProps) {
   const selectedPlanet = data.filter(
     (planet) => planet.name === params.planet,
   )[0];
@@ -20,13 +21,19 @@ export default function PlanetPage({ params }: PlanetProps) {
     <div className="flex flex-col justify-evenly px-4 py-8 text-white lg:px-40">
       {/* top  */}
       <div className="flex flex-col justify-evenly gap-4 md:flex-row lg:grid lg:grid-cols-3">
-        <PlanetImage selectedPlanet={selectedPlanet} />
+        <PlanetImage
+          selectedPlanet={selectedPlanet}
+          display={searchParams?.display}
+        />
         <div className="sm:grid sm:grid-cols-2 sm:items-center sm:gap-x-3 md:block">
           <div className="text-center sm:text-left">
             <h1 className="mb-6 text-6xl uppercase 2xl:text-8xl">
               {selectedPlanet.name}
             </h1>
-            <Description selectedPlanet={selectedPlanet} />
+            <Description
+              selectedPlanet={selectedPlanet}
+              display={searchParams?.display}
+            />
             <p className="mb-4 flex justify-center gap-2 text-sm opacity-50 sm:justify-normal 2xl:text-lg">
               Source:
               <a
@@ -45,7 +52,10 @@ export default function PlanetPage({ params }: PlanetProps) {
             </p>
           </div>
 
-          <InnerNavigation currentPlanet={params.planet} />
+          <InnerNavigation
+            currentPlanet={params.planet}
+            display={searchParams?.display}
+          />
         </div>
       </div>
 

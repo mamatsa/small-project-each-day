@@ -1,13 +1,12 @@
-"use client";
-
 import type { Planet } from "@/app/_data";
-import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 
-const PlanetImage = ({ selectedPlanet }: { selectedPlanet: Planet }) => {
-  const searchParams = useSearchParams();
-  const display = searchParams.get("display");
+interface PlanetImageProps {
+  selectedPlanet: Planet;
+  display?: string;
+}
 
+const PlanetImage = ({ selectedPlanet, display }: PlanetImageProps) => {
   let imageSrc = selectedPlanet.images.planet;
   if (display === "structure") {
     imageSrc = selectedPlanet.images.internal;
