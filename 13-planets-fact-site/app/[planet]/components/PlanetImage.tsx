@@ -1,6 +1,6 @@
 "use client";
 
-import { Planet } from "../page";
+import type { Planet } from "@/app/_data";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 

@@ -1,5 +1,5 @@
-import { promises as fs } from "fs";
 import Image from "next/image";
+import { data } from "../_data";
 import {
   Description,
   InfoBox,
@@ -11,35 +11,7 @@ interface PlanetProps {
   params: { planet: string };
 }
 
-export interface Planet {
-  name: string;
-  overview: {
-    content: string;
-    source: string;
-  };
-  structure: {
-    content: string;
-    source: string;
-  };
-  geology: {
-    content: string;
-    source: string;
-  };
-  rotation: string;
-  revolution: string;
-  radius: string;
-  temperature: string;
-  images: {
-    planet: string;
-    internal: string;
-    geology: string;
-    width: number;
-  };
-}
-
-export default async function PlanetPage({ params }: PlanetProps) {
-  const file = await fs.readFile(process.cwd() + "/app/data.json", "utf8");
-  const data: Planet[] = JSON.parse(file);
+export default function PlanetPage({ params }: PlanetProps) {
   const selectedPlanet = data.filter(
     (planet) => planet.name === params.planet,
   )[0];

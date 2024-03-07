@@ -1,6 +1,6 @@
 "use client";
 
-import { Planet } from "../page";
+import { Planet } from "@/app/_data";
 import { useSearchParams } from "next/navigation";
 
 const Description = ({ selectedPlanet }: { selectedPlanet: Planet }) => {
