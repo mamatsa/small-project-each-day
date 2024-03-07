@@ -1,12 +1,11 @@
-"use client";
+import { Planet } from "@/app/_data";
 
-import { Planet } from "../page";
-import { useSearchParams } from "next/navigation";
+interface DescriptionProps {
+  selectedPlanet: Planet;
+  display?: string;
+}
 
-const Description = ({ selectedPlanet }: { selectedPlanet: Planet }) => {
-  const searchParams = useSearchParams();
-  const display = searchParams.get("display");
-
+const Description = ({ selectedPlanet, display }: DescriptionProps) => {
   // Display text based on search params
   let content = "";
   if (!display) {

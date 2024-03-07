@@ -1,13 +1,11 @@
-"use client";
-
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 
-const InnerNavigation = ({ currentPlanet }: { currentPlanet: string }) => {
-  const searchParams = useSearchParams();
+interface InnerNavigationProps {
+  currentPlanet: string;
+  display?: string;
+}
 
-  const display = searchParams.get("display");
-
+const InnerNavigation = ({ currentPlanet, display }: InnerNavigationProps) => {
   let bgColor = "";
   let borderColor = "";
   switch (currentPlanet) {
